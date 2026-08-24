@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: Input Events</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2user-guide_2input-events.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Input Events </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md303"></a></p>
+<p>嵌入宿主窗口时，业务应用通过 <span class="tt">HtsInputEvent</span> 向 Viewer 转发输入。</p>
+<p>入口：</p>
+<div class="fragment"><div class="line">viewer.submitInput(event);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md304"></a>
+1. Event Type</h1>
+<p>支持：</p>
+<ul>
+<li>MouseMove</li>
+<li>MouseButtonPress</li>
+<li>MouseButtonRelease</li>
+<li>MouseDoubleClick</li>
+<li>MouseWheel</li>
+<li>KeyPress</li>
+<li>KeyRelease</li>
+<li>Resize</li>
+<li>Close</li>
+<li>MouseWarped</li>
+<li>PenPressure</li>
+<li>PenOrientation</li>
+<li>PenProximity</li>
+<li>TouchBegan</li>
+<li>TouchMoved</li>
+<li>TouchEnded</li>
+<li>Quit</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md305"></a>
+2. Mouse</h1>
+<div class="fragment"><div class="line">HtsInputEvent event;</div>
+<div class="line"><span class="keyword">event</span>.type = HtsInputEventType::MouseMove;</div>
+<div class="line"><span class="keyword">event</span>.x = x;</div>
+<div class="line"><span class="keyword">event</span>.y = y;</div>
+<div class="line"> </div>
+<div class="line">viewer.submitInput(event);</div>
+</div><!-- fragment --><p>按钮：</p>
+<div class="fragment"><div class="line">HtsMouseButton::Left</div>
+<div class="line">HtsMouseButton::Middle</div>
+<div class="line">HtsMouseButton::Right</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md306"></a>
+3. Wheel / Trackpad</h1>
+<p><span class="tt">HtsScrollMotion</span>：</p>
+<ul>
+<li>None</li>
+<li>Left</li>
+<li>Right</li>
+<li>Up</li>
+<li>Down</li>
+<li>TwoDimensional</li>
+</ul>
+<p>二维触控板滚动可以使用：</p>
+<div class="fragment"><div class="line"><span class="keyword">event</span>.scrollMotion = HtsScrollMotion::TwoDimensional;</div>
+<div class="line"><span class="keyword">event</span>.scrollDeltaX = dx;</div>
+<div class="line"><span class="keyword">event</span>.scrollDeltaY = dy;</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md307"></a>
+4. Keyboard</h1>
+<p>公开字段：</p>
+<div class="fragment"><div class="line"><span class="keyword">event</span>.key</div>
+<div class="line"><span class="keyword">event</span>.unmodifiedKey</div>
+</div><!-- fragment --><p>宿主框架需要把自身 Key Code 转换为 Viewer 使用的输入值。</p>
+<p>完整映射建议集中在 Adapter 中，而不要散落在多个 QWidget / Window Handler 中。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md308"></a>
+5. Pen</h1>
+<p>公开支持：</p>
+<ul>
+<li>pressure；</li>
+<li>tiltX；</li>
+<li>tiltY；</li>
+<li>rotation；</li>
+<li>Pen / Puck / Eraser；</li>
+<li>proximity enter / leave。</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md309"></a>
+6. Touch</h1>
+<p>公开字段：</p>
+<ul>
+<li><span class="tt">touchId</span></li>
+<li><span class="tt">touchPhase</span></li>
+<li><span class="tt">tapCount</span></li>
+<li>x / y</li>
+</ul>
+<p>Touch Phase：</p>
+<ul>
+<li>Began</li>
+<li>Moved</li>
+<li>Stationary</li>
+<li>Ended</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md310"></a>
+7. Resize</h1>
+<p>虽然 <span class="tt">HtsInputEvent</span> 支持 Resize 类型，SDK 同时提供：</p>
+<div class="fragment"><div class="line">resizeViewport(...)</div>
+</div><!-- fragment --><p>宿主窗口尺寸变化时应按照对应 Sample 的统一方式处理，避免同一次 Resize 被业务层重复提交。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md311"></a>
+8. DPI</h1>
+<p>输入 x/y 与 <span class="tt">resizeViewport()</span> 使用的 viewport 尺寸必须处于一致的像素坐标体系。</p>
+<p>Qt 高 DPI 环境下通常需要关注 <span class="tt">devicePixelRatioF()</span>。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md312"></a>
+9. 推荐 Adapter 结构</h1>
+<div class="fragment"><div class="line">Qt / Win32 Event</div>
+<div class="line">       │</div>
+<div class="line">       ▼</div>
+<div class="line">Application Input Adapter</div>
+<div class="line">       │</div>
+<div class="line">       ▼</div>
+<div class="line">HtsInputEvent</div>
+<div class="line">       │</div>
+<div class="line">       ▼</div>
+<div class="line">viewer.submitInput()</div>
+</div><!-- fragment --><p>Adapter 是业务应用代码，不属于 Viewer SDK 内部实现。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

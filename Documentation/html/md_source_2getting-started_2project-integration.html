@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: 工程接入</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2getting-started_2project-integration.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">工程接入 </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md198"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md199"></a>
+1. 推荐工程结构</h1>
+<div class="fragment"><div class="line">YourApplication/</div>
+<div class="line">├── src/</div>
+<div class="line">├── ref/</div>
+<div class="line">│   └── hts.viewer/</div>
+<div class="line">│       └── win/</div>
+<div class="line">│           ├── include/</div>
+<div class="line">│           ├── lib/</div>
+<div class="line">│           └── bin/</div>
+<div class="line">└── CMakeLists.txt</div>
+</div><!-- fragment --><p>这种组织方式的目标是让 Viewer SDK 作为明确的二进制依赖存在，而不是把 Viewer 源码混入业务工程。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md200"></a>
+2. Include</h1>
+<p>推荐只在需要 Viewer 的代码中包含：</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_hts_viewer_sdk_8h.html">HtsViewerSdk.h</a>&gt;</span></div>
+<div class="ttc" id="a_hts_viewer_sdk_8h_html"><div class="ttname"><a href="_hts_viewer_sdk_8h.html">HtsViewerSdk.h</a></div></div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md201"></a>
+3. Link</h1>
+<p>CMake 中应让业务 target 链接 <span class="tt">Hts3dViewerSDK.lib</span> 对应的 Imported Target 或链接库。</p>
+<p>具体 target 名称以正式 SDK Package 的 CMake 配置为准。</p>
+<p>如果当前工程尚未提供 <span class="tt">find_package(Hts3dViewerSDK CONFIG)</span>，也建议把 SDK 路径集中在项目顶层 CMake，不要在每个业务模块重复硬编码。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md202"></a>
+4. Runtime</h1>
+<p>构建后应确保 Viewer Runtime DLL 被部署到应用可搜索位置，例如应用 exe 同目录。</p>
+<p>建议由 CMake 的 post-build 或 install 规则自动处理，而不是要求最终用户手动配置系统 PATH。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md203"></a>
+5. 业务数据转换层</h1>
+<p>建议业务项目建立一个明确的数据转换边界：</p>
+<div class="fragment"><div class="line">Business CAD / Mesh / Solver Data</div>
+<div class="line">              │</div>
+<div class="line">              │ convert</div>
+<div class="line">              ▼</div>
+<div class="line">       Hts Viewer Public DTO</div>
+<div class="line">              │</div>
+<div class="line">              ▼</div>
+<div class="line">         HtsViewerSdk</div>
+</div><!-- fragment --><p>转换代码属于业务应用，不属于 Viewer SDK。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md204"></a>
+6. 不要形成的依赖</h1>
+<p>业务代码不应依赖：</p>
+<ul>
+<li>Viewer 内部头文件；</li>
+<li>Viewer 内部 Manager；</li>
+<li>Viewer 私有场景对象；</li>
+<li>Viewer 的私有渲染实现；</li>
+<li>Viewer 源码目录；</li>
+<li>Demo 私有 Importer。</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md205"></a>
+7. 多 Viewer</h1>
+<p><span class="tt">HtsViewerSettings</span> 是 Per-Viewer 设置对象。业务系统如果创建多个 Viewer 实例，应分别维护和应用各自设置。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md206"></a>
+8. UI 集成</h1>
+<p>嵌入模式需要结合宿主窗口生命周期：</p>
+<ul>
+<li>初始化 Viewer；</li>
+<li>转发 Resize；</li>
+<li>转发输入事件；</li>
+<li>驱动 Frame；</li>
+<li>在窗口销毁时结束 Viewer 使用。</li>
+</ul>
+<p>具体宿主平台代码请以对应正式 Sample 为准。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

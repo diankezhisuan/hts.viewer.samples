@@ -1,0 +1,2 @@
+add_executable(viewer_license main.cpp)
+configure_hts_viewer_sample(viewer_license)

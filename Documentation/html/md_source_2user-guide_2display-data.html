@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: CAD / Geometry Display Data</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2user-guide_2display-data.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">CAD / Geometry Display Data </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md288"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md289"></a>
+1. 数据入口</h1>
+<p>正式 CAD 或 Geometry Display 通过：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> upsertDisplayData(<span class="keyword">const</span> HtsDisplayMeshData&amp; data);</div>
+</div><!-- fragment --><p>提交。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md290"></a>
+2. HtsDisplayMeshData</h1>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>HtsDisplayMeshData</div>
+<div class="line">{</div>
+<div class="line">    std::string sceneType;</div>
+<div class="line">    <span class="keywordtype">int</span> shapeVersion;</div>
+<div class="line">    std::vector&lt;HtsDisplayObjectData&gt; objects;</div>
+<div class="line">};</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md291"></a>
+<span class="tt">sceneType</span></h2>
+<p>业务可以用它描述当前提交数据的场景类别。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md292"></a>
+<span class="tt">shapeVersion</span></h2>
+<p>用于表达业务 Display Data 的版本信息。具体版本策略由业务系统决定。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md293"></a>
+<span class="tt">objects</span></h2>
+<p>本次提交的业务显示对象集合。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md294"></a>
+3. HtsDisplayObjectData</h1>
+<p>对象包含：</p>
+<ul>
+<li><span class="tt">objectId</span></li>
+<li><span class="tt">bodyId</span></li>
+<li><span class="tt">shapeType</span></li>
+<li><span class="tt">faces</span></li>
+<li><span class="tt">edges</span></li>
+<li><span class="tt">vertices</span></li>
+<li><span class="tt">bodies</span></li>
+<li><span class="tt">importedMaterials</span></li>
+<li><span class="tt">visible</span></li>
+</ul>
+<p><span class="tt">objectId</span> 应保持稳定且非空。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md295"></a>
+4. Face Data</h1>
+<p><span class="tt">HtsDisplayFaceData</span> 主要包含：</p>
+<ul>
+<li>Object / Body 身份；</li>
+<li><span class="tt">solidTag</span></li>
+<li><span class="tt">faceTag</span></li>
+<li><span class="tt">positions</span></li>
+<li><span class="tt">normals</span></li>
+<li><span class="tt">barycentric</span></li>
+<li><span class="tt">indices</span></li>
+<li><span class="tt">edgeTags</span></li>
+<li><span class="tt">color</span></li>
+<li><span class="tt">materialId</span></li>
+<li><span class="tt">corners</span></li>
+<li><span class="tt">visible</span></li>
+</ul>
+<p>三角面几何由业务层生成。</p>
+<p>Viewer SDK 不负责解析 BREP 或 CAD Kernel Shape。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md296"></a>
+5. Edge Data</h1>
+<p><span class="tt">HtsDisplayEdgeData</span>：</p>
+<ul>
+<li><span class="tt">edgeTag</span></li>
+<li><span class="tt">ownerFaceTags</span></li>
+<li><span class="tt">polyline</span></li>
+<li><span class="tt">color</span></li>
+<li><span class="tt">visible</span></li>
+</ul>
+<p>用于 CAD Edge 等线几何。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md297"></a>
+6. Vertex Data</h1>
+<p><span class="tt">HtsDisplayVertexData</span>：</p>
+<ul>
+<li><span class="tt">vertexTag</span></li>
+<li><span class="tt">position</span></li>
+<li><span class="tt">color</span></li>
+<li><span class="tt">visible</span></li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md298"></a>
+7. Body Data</h1>
+<p><span class="tt">HtsDisplayBodyData</span> 可以描述：</p>
+<div class="fragment"><div class="line"><span class="keyword">enum class</span> HtsDisplayBodyKind</div>
+<div class="line">{</div>
+<div class="line">    Unknown,</div>
+<div class="line">    Solid,</div>
+<div class="line">    Shell,</div>
+<div class="line">    Sheet,</div>
+<div class="line">    AirBoxCandidate</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>并携带 Bounds 和拓扑 Tag 集合。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md299"></a>
+8. Imported Material</h1>
+<p><span class="tt">HtsImportedMaterialData</span> 提供：</p>
+<ul>
+<li><span class="tt">materialId</span></li>
+<li><span class="tt">name</span></li>
+<li><span class="tt">baseColor</span></li>
+<li><span class="tt">metallic</span></li>
+<li><span class="tt">roughness</span></li>
+<li><span class="tt">specular</span></li>
+<li><span class="tt">opacity</span></li>
+<li><span class="tt">fromFile</span></li>
+</ul>
+<p>Face 可通过 <span class="tt">materialId</span> 引用对象的导入材质。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md300"></a>
+9. 更新</h1>
+<p>相同业务对象后续变化时继续使用：</p>
+<div class="fragment"><div class="line">viewer.upsertDisplayData(updatedData);</div>
+</div><!-- fragment --><p>不要把 <span class="tt">clearScene()</span> 作为每次局部更新的默认方案。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md301"></a>
+10. 删除</h1>
+<div class="fragment"><div class="line">viewer.removeDisplayObject(objectId);</div>
+</div><!-- fragment --><p>批量：</p>
+<div class="fragment"><div class="line">viewer.removeDisplayObjects(objectIds);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md302"></a>
+11. 显示模式</h1>
+<div class="fragment"><div class="line">viewer.setDisplayStyle(HtsDisplayStyle::EngineeringDefault);</div>
+</div><!-- fragment --><p>当前公开模式包括：</p>
+<ul>
+<li><span class="tt">Shaded</span></li>
+<li><span class="tt">ShadedWithCadEdges</span></li>
+<li><span class="tt">TriangleWireframe</span></li>
+<li><span class="tt">TransparentAirBox</span></li>
+<li><span class="tt">EngineeringDefault</span></li>
+</ul>
+<div class="image">
+<img src="display-engineering-default.png" alt=""/>
+<div class="caption">
+Engineering Default</div></div>
+ <div class="image">
+<img src="display-shaded-cad-edges.png" alt=""/>
+<div class="caption">
+Shaded With CAD Edges</div></div>
+ <div class="image">
+<img src="display-triangle-wireframe.png" alt=""/>
+<div class="caption">
+Triangle Wireframe</div></div>
+ <div class="image">
+<img src="display-airbox-transparent.png" alt=""/>
+<div class="caption">
+Transparent AirBox</div></div>
+ </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

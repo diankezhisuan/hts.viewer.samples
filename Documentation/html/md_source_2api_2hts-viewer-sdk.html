@@ -1,0 +1,437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: HtsViewerSdk API Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2api_2hts-viewer-sdk.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">HtsViewerSdk API Reference </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md13"></a></p>
+<div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_define" href="_hts_viewer_api_8h.html#af08641c36648a45a2161cc5fe1cce511">HTS_VIEWER_API</a> HtsViewerSdk</div>
+<div class="ttc" id="a_hts_viewer_api_8h_html_af08641c36648a45a2161cc5fe1cce511"><div class="ttname"><a href="_hts_viewer_api_8h.html#af08641c36648a45a2161cc5fe1cce511">HTS_VIEWER_API</a></div><div class="ttdeci">#define HTS_VIEWER_API</div><div class="ttdef"><b>定义</b> HtsViewerApi.h:10</div></div>
+</div><!-- fragment --><p>Hts Viewer SDK 的统一公开 Facade。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+1. 生命周期</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+<span class="tt">initializeEmbedded</span></h2>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> initializeEmbedded(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
+</div><!-- fragment --><p>初始化嵌入式 Viewer。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+<span class="tt">initializeStandalone</span></h2>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> initializeStandalone(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
+</div><!-- fragment --><p>初始化独立 Viewer。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+<span class="tt">frame</span></h2>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> frame();</div>
+<div class="line"><span class="keywordtype">bool</span> frame(<span class="keywordtype">double</span> simulationTime);</div>
+</div><!-- fragment --><p>驱动 Viewer 一帧。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+<span class="tt">hasPendingFrameWork</span></h2>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> hasPendingFrameWork() <span class="keyword">const</span>;</div>
+</div><!-- fragment --><p>当 Viewer 仍有需要后续 Frame 推进的公开显示工作时返回 <span class="tt">true</span>。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+<span class="tt">shouldClose</span></h2>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> shouldClose() <span class="keyword">const</span>;</div>
+</div><!-- fragment --><p>查询 Viewer 是否请求关闭。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+<span class="tt">resizeViewport</span></h2>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> resizeViewport(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
+</div><!-- fragment --><p>更新 Viewport。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+<span class="tt">submitInput</span></h2>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> submitInput(<span class="keyword">const</span> HtsInputEvent&amp; event);</div>
+</div><!-- fragment --><p>提交统一输入事件。</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+2. Settings</h1>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> applySettings(<span class="keyword">const</span> HtsViewerSettings&amp; settings);</div>
+<div class="line">HtsViewerSettings settings() <span class="keyword">const</span>;</div>
+<div class="line"><span class="keywordtype">bool</span> loadSettings(<span class="keyword">const</span> std::string&amp; filePath);</div>
+<div class="line"><span class="keywordtype">bool</span> saveSettings(<span class="keyword">const</span> std::string&amp; filePath) <span class="keyword">const</span>;</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+3. Authorization</h1>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> isAuthorized() <span class="keyword">const</span>;</div>
+<div class="line">std::string machineCode() <span class="keyword">const</span>;</div>
+<div class="line"><span class="keywordtype">bool</span> exportMachineCode(<span class="keyword">const</span> std::string&amp; filePath) <span class="keyword">const</span>;</div>
+<div class="line"><span class="keywordtype">bool</span> importLicense(<span class="keyword">const</span> std::string&amp; directoryPath);</div>
+<div class="line"><span class="keywordtype">bool</span> checkAuthorization() <span class="keyword">const</span>;</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+4. Display Data</h1>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> clearScene();</div>
+<div class="line"><span class="keywordtype">bool</span> upsertDisplayData(<span class="keyword">const</span> HtsDisplayMeshData&amp; data);</div>
+<div class="line"><span class="keywordtype">bool</span> removeDisplayObject(<span class="keyword">const</span> std::string&amp; objectId);</div>
+<div class="line"><span class="keywordtype">bool</span> removeDisplayObjects(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; objectIds);</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+5. Mesh</h1>
+<p>完整 Mesh：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> upsertMeshData(<span class="keyword">const</span> HtsMeshDisplayData&amp; data);</div>
+<div class="line"><span class="keywordtype">bool</span> removeMesh(<span class="keyword">const</span> std::string&amp; meshId);</div>
+<div class="line"><span class="keywordtype">void</span> clearMeshes();</div>
+<div class="line"><span class="keywordtype">bool</span> hasMesh(<span class="keyword">const</span> std::string&amp; meshId) <span class="keyword">const</span>;</div>
+</div><!-- fragment --><p>Staged Update：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> beginMeshUpdate(<span class="keyword">const</span> std::string&amp; meshId, <span class="keywordtype">bool</span> replaceExisting = <span class="keyword">true</span>);</div>
+<div class="line"><span class="keywordtype">bool</span> appendMeshPart(<span class="keyword">const</span> std::string&amp; meshId, <span class="keyword">const</span> HtsMeshPartData&amp; part);</div>
+<div class="line"><span class="keywordtype">bool</span> endMeshUpdate(<span class="keyword">const</span> std::string&amp; meshId);</div>
+<div class="line"><span class="keywordtype">bool</span> cancelMeshUpdate(<span class="keyword">const</span> std::string&amp; meshId);</div>
+</div><!-- fragment --><p>Part：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> upsertMeshPart(<span class="keyword">const</span> std::string&amp; meshId, <span class="keyword">const</span> HtsMeshPartData&amp; part);</div>
+<div class="line"><span class="keywordtype">bool</span> removeMeshPart(<span class="keyword">const</span> std::string&amp; meshId, <span class="keyword">const</span> std::string&amp; partId);</div>
+<div class="line">std::vector&lt;std::string&gt; meshPartIds(<span class="keyword">const</span> std::string&amp; meshId) <span class="keyword">const</span>;</div>
+</div><!-- fragment --><p>Visibility：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> meshPartVisible(<span class="keyword">const</span> std::string&amp; meshId,</div>
+<div class="line">                     <span class="keyword">const</span> std::string&amp; partId,</div>
+<div class="line">                     <span class="keywordtype">bool</span>&amp; visible) <span class="keyword">const</span>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> setMeshVisible(<span class="keyword">const</span> std::string&amp; meshId, <span class="keywordtype">bool</span> visible);</div>
+<div class="line"><span class="keywordtype">bool</span> setMeshPartsVisible(<span class="keyword">const</span> std::string&amp; meshId,</div>
+<div class="line">                         <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; partIds,</div>
+<div class="line">                         <span class="keywordtype">bool</span> visible);</div>
+<div class="line"><span class="keywordtype">bool</span> showOnlyMeshParts(<span class="keyword">const</span> std::string&amp; meshId,</div>
+<div class="line">                       <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; partIds);</div>
+</div><!-- fragment --><p>Selection：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> setSelectedMeshParts(<span class="keyword">const</span> std::string&amp; meshId,</div>
+<div class="line">                          <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; partIds);</div>
+<div class="line"><span class="keywordtype">bool</span> clearMeshSelection(<span class="keyword">const</span> std::string&amp; meshId);</div>
+<div class="line">std::vector&lt;std::string&gt; selectedMeshPartIds(<span class="keyword">const</span> std::string&amp; meshId) <span class="keyword">const</span>;</div>
+</div><!-- fragment --><p>Style / Options：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> setMeshPartStyle(<span class="keyword">const</span> std::string&amp; meshId,</div>
+<div class="line">                      <span class="keyword">const</span> std::string&amp; partId,</div>
+<div class="line">                      <span class="keyword">const</span> HtsMeshPartStyle&amp; style);</div>
+<div class="line"><span class="keywordtype">bool</span> clearMeshPartStyle(<span class="keyword">const</span> std::string&amp; meshId,</div>
+<div class="line">                        <span class="keyword">const</span> std::string&amp; partId);</div>
+<div class="line"><span class="keywordtype">bool</span> applyMeshDisplayOptions(<span class="keyword">const</span> HtsMeshDisplayOptions&amp; options);</div>
+<div class="line">HtsMeshDisplayOptions meshDisplayOptions() <span class="keyword">const</span>;</div>
+<div class="line">HtsMeshStatistics meshStatistics(<span class="keyword">const</span> std::string&amp; meshId) <span class="keyword">const</span>;</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+6. Preview</h1>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> upsertPreview(<span class="keyword">const</span> std::string&amp; tag,</div>
+<div class="line">                   <span class="keyword">const</span> HtsDisplayMeshData&amp; data,</div>
+<div class="line">                   <span class="keyword">const</span> HtsPreviewStyle&amp; style = {});</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> upsertPreviewAxis(<span class="keyword">const</span> std::string&amp; tag,</div>
+<div class="line">                       <span class="keyword">const</span> HtsVec3f&amp; origin,</div>
+<div class="line">                       <span class="keyword">const</span> HtsVec3f&amp; x,</div>
+<div class="line">                       <span class="keyword">const</span> HtsVec3f&amp; y,</div>
+<div class="line">                       <span class="keyword">const</span> HtsVec3f&amp; z,</div>
+<div class="line">                       <span class="keywordtype">double</span> axisLength = 2.0,</div>
+<div class="line">                       <span class="keyword">const</span> HtsPreviewStyle&amp; style = {});</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> setPreviewVisible(<span class="keyword">const</span> std::string&amp; tag, <span class="keywordtype">bool</span> visible);</div>
+<div class="line"><span class="keywordtype">bool</span> setPreviewTransform(<span class="keyword">const</span> std::string&amp; tag,</div>
+<div class="line">                         <span class="keyword">const</span> HtsTransform&amp; transform);</div>
+<div class="line"><span class="keywordtype">bool</span> hasPreview(<span class="keyword">const</span> std::string&amp; tag) <span class="keyword">const</span>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> upsertPreviewMarker(<span class="keyword">const</span> std::string&amp; tag,</div>
+<div class="line">                         <span class="keyword">const</span> HtsVec3d&amp; worldPoint,</div>
+<div class="line">                         HtsFeaturePointKind kind,</div>
+<div class="line">                         <span class="keywordtype">bool</span> hollow = <span class="keyword">false</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> removePreview(<span class="keyword">const</span> std::string&amp; tag);</div>
+<div class="line"><span class="keywordtype">void</span> clearPreviews();</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
+7. Selection &amp; Pick</h1>
+<p>Mode：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> setSelectionMode(HtsSelectionMode mode);</div>
+<div class="line">HtsSelectionMode selectionMode() <span class="keyword">const</span>;</div>
+</div><!-- fragment --><p>Pick：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> pickTarget(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, HtsSelectionTarget&amp; target) <span class="keyword">const</span>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> pickTarget(<span class="keywordtype">double</span> x,</div>
+<div class="line">                <span class="keywordtype">double</span> y,</div>
+<div class="line">                HtsSelectionMode mode,</div>
+<div class="line">                HtsSelectionTarget&amp; target,</div>
+<div class="line">                HtsVec3d&amp; worldPoint) <span class="keyword">const</span>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> pickFeaturePoint(<span class="keywordtype">double</span> x,</div>
+<div class="line">                      <span class="keywordtype">double</span> y,</div>
+<div class="line">                      HtsVec3d&amp; worldPoint,</div>
+<div class="line">                      HtsFeaturePointKind&amp; kind) <span class="keyword">const</span>;</div>
+</div><!-- fragment --><p>Projection：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> screenToWorldRay(<span class="keywordtype">double</span> x,</div>
+<div class="line">                      <span class="keywordtype">double</span> y,</div>
+<div class="line">                      HtsVec3d&amp; origin,</div>
+<div class="line">                      HtsVec3d&amp; direction) <span class="keyword">const</span>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> projectWorldToScreen(<span class="keyword">const</span> HtsVec3d&amp; worldPoint,</div>
+<div class="line">                          HtsVec3d&amp; screenPoint) <span class="keyword">const</span>;</div>
+</div><!-- fragment --><p>Selection：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> selectAt(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, <span class="keywordtype">bool</span> additive = <span class="keyword">false</span>);</div>
+<div class="line"><span class="keywordtype">bool</span> boxSelect(<span class="keywordtype">double</span> x0, <span class="keywordtype">double</span> y0, <span class="keywordtype">double</span> x1, <span class="keywordtype">double</span> y1);</div>
+<div class="line"><span class="keywordtype">bool</span> selectAllVisible();</div>
+<div class="line"><span class="keywordtype">void</span> clearSelection();</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> hasSelection() <span class="keyword">const</span>;</div>
+<div class="line">HtsSelectionTarget selectionTarget() <span class="keyword">const</span>;</div>
+<div class="line">std::vector&lt;HtsSelectionTarget&gt; selectionTargets() <span class="keyword">const</span>;</div>
+<div class="line">HtsSelectionDisplayState selectionDisplayState() <span class="keyword">const</span>;</div>
+<div class="line"><span class="keywordtype">bool</span> setSelectionTargets(<span class="keyword">const</span> std::vector&lt;HtsSelectionTarget&gt;&amp; targets);</div>
+<div class="line"><span class="keywordtype">bool</span> setSelectionDimEnabled(<span class="keywordtype">bool</span> enabled);</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
+8. Hover</h1>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> updateHover(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y);</div>
+<div class="line"><span class="keywordtype">bool</span> hasHover() <span class="keyword">const</span>;</div>
+<div class="line">HtsSelectionTarget hoverTarget() <span class="keyword">const</span>;</div>
+<div class="line"><span class="keywordtype">void</span> clearHover();</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
+9. Display Style</h1>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> setDisplayStyle(HtsDisplayStyle style);</div>
+<div class="line">HtsDisplayStyle displayStyle() <span class="keyword">const</span>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> showCadEdges(<span class="keywordtype">bool</span> visible);</div>
+<div class="line"><span class="keywordtype">bool</span> cadEdgesVisible() <span class="keyword">const</span>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> showTriangleWireframe(<span class="keywordtype">bool</span> visible);</div>
+<div class="line"><span class="keywordtype">bool</span> triangleWireframeVisible() <span class="keyword">const</span>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setAirBoxTransparent(<span class="keywordtype">bool</span> transparent);</div>
+<div class="line"><span class="keywordtype">bool</span> airBoxTransparent() <span class="keyword">const</span>;</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md39"></a>
+10. Visibility</h1>
+<p>Selection：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> hideSelected();</div>
+<div class="line"><span class="keywordtype">bool</span> showSelected();</div>
+<div class="line"><span class="keywordtype">bool</span> isolateSelected();</div>
+<div class="line"><span class="keywordtype">bool</span> clearIsolate();</div>
+<div class="line"><span class="keywordtype">bool</span> showAll();</div>
+<div class="line"><span class="keywordtype">bool</span> resetVisibility();</div>
+</div><!-- fragment --><p>Target / Object：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> setTargetVisible(<span class="keyword">const</span> HtsSelectionTarget&amp; target, <span class="keywordtype">bool</span> visible);</div>
+<div class="line"><span class="keywordtype">bool</span> targetVisible(<span class="keyword">const</span> HtsSelectionTarget&amp; target, <span class="keywordtype">bool</span>&amp; visible) <span class="keyword">const</span>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> setObjectsVisible(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; objectIds,</div>
+<div class="line">                       <span class="keywordtype">bool</span> visible);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> setTargetsVisible(<span class="keyword">const</span> std::vector&lt;HtsSelectionTarget&gt;&amp; targets,</div>
+<div class="line">                       <span class="keywordtype">bool</span> visible);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> setObjectPartVisible(<span class="keyword">const</span> std::string&amp; objectId,</div>
+<div class="line">                          HtsObjectDisplayPart part,</div>
+<div class="line">                          <span class="keywordtype">bool</span> visible);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> setObjectTopologyVisible(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; objectIds,</div>
+<div class="line">                              <span class="keywordtype">bool</span> visible);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> resetDisplayOverrides();</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md41"></a>
+11. Appearance</h1>
+<p>Target：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> setTargetColorAndTransparency(<span class="keyword">const</span> HtsSelectionTarget&amp; target,</div>
+<div class="line">                                   <span class="keyword">const</span> HtsColor4f&amp; color,</div>
+<div class="line">                                   <span class="keywordtype">float</span> transparency);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> setTargetMaterialAppearance(<span class="keyword">const</span> HtsSelectionTarget&amp; target,</div>
+<div class="line">                                 <span class="keyword">const</span> HtsMaterialAppearance&amp; appearance);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> targetColorAndTransparency(<span class="keyword">const</span> HtsSelectionTarget&amp; target,</div>
+<div class="line">                                HtsColor4f&amp; color,</div>
+<div class="line">                                <span class="keywordtype">float</span>&amp; transparency) <span class="keyword">const</span>;</div>
+</div><!-- fragment --><p>Object：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> setObjectsColorAndTransparency(</div>
+<div class="line">        <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; objectIds,</div>
+<div class="line">        <span class="keyword">const</span> HtsColor4f&amp; color,</div>
+<div class="line">        <span class="keywordtype">float</span> transparency);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> setObjectsMaterialAppearance(</div>
+<div class="line">        <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; objectIds,</div>
+<div class="line">        <span class="keyword">const</span> HtsMaterialAppearance&amp; appearance);</div>
+</div><!-- fragment --><p>Selection：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> setSelectedColor(<span class="keyword">const</span> HtsColor4f&amp; color);</div>
+<div class="line"><span class="keywordtype">bool</span> setSelectedOpacity(<span class="keywordtype">float</span> opacity);</div>
+<div class="line"><span class="keywordtype">bool</span> setSelectedTransparent();</div>
+<div class="line"><span class="keywordtype">bool</span> setSelectedMaterialPreset(HtsMaterialPreset preset);</div>
+<div class="line"><span class="keywordtype">bool</span> setSelectedCustomMaterial(<span class="keyword">const</span> HtsRenderMaterial&amp; material);</div>
+<div class="line"><span class="keywordtype">bool</span> resetSelectedStyle();</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md43"></a>
+12. Axis / HUD / Grid</h1>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> setAxisVisible(<span class="keywordtype">bool</span> visible);</div>
+<div class="line"><span class="keywordtype">bool</span> setScaleBarVisible(<span class="keywordtype">bool</span> visible);</div>
+<div class="line"><span class="keywordtype">bool</span> setHudAxisVisible(<span class="keywordtype">bool</span> visible);</div>
+<div class="line"><span class="keywordtype">bool</span> setDebugEnabled(<span class="keywordtype">bool</span> enabled);</div>
+<div class="line"><span class="keywordtype">bool</span> setBackgroundColor(<span class="keyword">const</span> HtsColor4f&amp; color);</div>
+<div class="line"><span class="keywordtype">bool</span> setGridPlaneColor(<span class="keyword">const</span> HtsColor4f&amp; color);</div>
+</div><!-- fragment --><p>Coordinate System：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> setCoordinateSystem(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>,</div>
+<div class="line">                         <span class="keyword">const</span> HtsVec3f&amp; origin,</div>
+<div class="line">                         <span class="keyword">const</span> HtsVec3f&amp; x,</div>
+<div class="line">                         <span class="keyword">const</span> HtsVec3f&amp; y,</div>
+<div class="line">                         <span class="keyword">const</span> HtsVec3f&amp; z,</div>
+<div class="line">                         <span class="keywordtype">double</span> axisLength = 2.0);</div>
+</div><!-- fragment --><p>Grid：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> setGridFrame(<span class="keyword">const</span> HtsVec3f&amp; origin,</div>
+<div class="line">                  <span class="keyword">const</span> HtsVec3f&amp; x,</div>
+<div class="line">                  <span class="keyword">const</span> HtsVec3f&amp; y,</div>
+<div class="line">                  <span class="keyword">const</span> HtsVec3f&amp; z,</div>
+<div class="line">                  HtsGridPlane plane);</div>
+<div class="line"> </div>
+<div class="line">HtsGridPlane currentGridPlane() <span class="keyword">const</span>;</div>
+<div class="line"><span class="keywordtype">double</span> currentGridSpacing() <span class="keyword">const</span>;</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md45"></a>
+13. Engineering Annotation</h1>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> showPlaneWaveGlyph(<span class="keyword">const</span> HtsPlaneWaveGlyph&amp; glyph);</div>
+<div class="line"><span class="keywordtype">bool</span> removePlaneWaveGlyph(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> showBoundaryFaceOverlay(<span class="keyword">const</span> std::string&amp; key,</div>
+<div class="line">                             <span class="keyword">const</span> HtsFaceOverlayData&amp; data);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> showExcitationFaceOverlay(<span class="keyword">const</span> std::string&amp; key,</div>
+<div class="line">                               <span class="keyword">const</span> HtsFaceOverlayData&amp; data);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> removeFaceOverlay(<span class="keyword">const</span> std::string&amp; key);</div>
+<div class="line"><span class="keywordtype">bool</span> clearFaceOverlays();</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md47"></a>
+14. Camera</h1>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> flyToTargets(<span class="keyword">const</span> std::vector&lt;HtsSelectionTarget&gt;&amp; targets);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> fitView();</div>
+<div class="line"><span class="keywordtype">void</span> fitSelection();</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setTopView();</div>
+<div class="line"><span class="keywordtype">void</span> setBottomView();</div>
+<div class="line"><span class="keywordtype">void</span> setFrontView();</div>
+<div class="line"><span class="keywordtype">void</span> setRearView();</div>
+<div class="line"><span class="keywordtype">void</span> setRightView();</div>
+<div class="line"><span class="keywordtype">void</span> setLeftView();</div>
+<div class="line"><span class="keywordtype">void</span> setIsoView();</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setViewCenterToSelection();</div>
+<div class="line"><span class="keywordtype">void</span> zoomAroundModelCenter(<span class="keywordtype">double</span> factor);</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md49"></a>
+15. Diagnostics</h1>
+<div class="fragment"><div class="line">std::string displayStatsText() <span class="keyword">const</span>;</div>
+<div class="line">std::string selectionSummary() <span class="keyword">const</span>;</div>
+<div class="line">std::string hoverSummary() <span class="keyword">const</span>;</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

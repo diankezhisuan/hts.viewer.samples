@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: Selection Target</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2concepts_2selection-target.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Selection Target </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md158"></a></p>
+<p><span class="tt">HtsSelectionTarget</span> 是 Viewer 与业务系统之间传递选择语义的核心公开结构。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md159"></a>
+1. Target Type</h1>
+<div class="fragment"><div class="line"><span class="keyword">enum class</span> HtsSelectionTargetType</div>
+<div class="line">{</div>
+<div class="line">    None,</div>
+<div class="line">    Object,</div>
+<div class="line">    Body,</div>
+<div class="line">    Face,</div>
+<div class="line">    Edge,</div>
+<div class="line">    Vertex</div>
+<div class="line">};</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md160"></a>
+2. Target 内容</h1>
+<div class="fragment"><div class="line">HtsSelectionTarget target;</div>
+</div><!-- fragment --><p>根据 <span class="tt">target.type</span> 读取对应身份字段。</p>
+<p>不要假设所有字段在所有 Target Type 下都有业务意义。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md161"></a>
+3. 验证</h1>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="namespacehts_1_1viewer.html#a27f663c8f9a9980abdbc4a708313164a">hts::viewer::isValidSelectionTarget</a>(target)) {</div>
+<div class="line">    <span class="comment">// 可以作为有效业务目标使用。</span></div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehts_1_1viewer_html_a27f663c8f9a9980abdbc4a708313164a"><div class="ttname"><a href="namespacehts_1_1viewer.html#a27f663c8f9a9980abdbc4a708313164a">hts::viewer::isValidSelectionTarget</a></div><div class="ttdeci">bool isValidSelectionTarget(const HtsSelectionTarget &amp;target)</div><div class="ttdef"><b>定义</b> HtsViewerTypes.h:117</div></div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md162"></a>
+4. 比较</h1>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="namespacehts_1_1viewer.html#acca1e21dfde14d9ba7808fd384d5cd7a">hts::viewer::isSameSelectionTarget</a>(a, b)) {</div>
+<div class="line">    <span class="comment">// 两个 target 表示同一完整语义目标。</span></div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehts_1_1viewer_html_acca1e21dfde14d9ba7808fd384d5cd7a"><div class="ttname"><a href="namespacehts_1_1viewer.html#acca1e21dfde14d9ba7808fd384d5cd7a">hts::viewer::isSameSelectionTarget</a></div><div class="ttdeci">bool isSameSelectionTarget(const HtsSelectionTarget &amp;lhs, const HtsSelectionTarget &amp;rhs)</div><div class="ttdef"><b>定义</b> HtsViewerTypes.h:137</div></div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md163"></a>
+5. 查询式 Pick 与 Selection</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md164"></a>
+Query Pick</h2>
+<div class="fragment"><div class="line">viewer.pickTarget(x, y, target);</div>
+</div><!-- fragment --><p>用于查询屏幕位置下的目标，不改变当前 Selection。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md165"></a>
+Selection</h2>
+<div class="fragment"><div class="line">viewer.selectAt(x, y);</div>
+</div><!-- fragment --><p>用于修改 Viewer 当前选择状态。</p>
+<p>应用程序应根据需求区分二者，避免把纯查询操作错误地转成 Selection。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md166"></a>
+6. 完整 Selection Set</h1>
+<p>多选场景使用：</p>
+<div class="fragment"><div class="line">std::vector&lt;HtsSelectionTarget&gt; targets = viewer.selectionTargets();</div>
+</div><!-- fragment --><p>不要只依赖：</p>
+<div class="fragment"><div class="line">viewer.selectionTarget();</div>
+</div><!-- fragment --><p>来代表多选集合。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: Viewer 生命周期</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2user-guide_2viewer-lifecycle.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Viewer 生命周期 </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md375"></a></p>
+<p><span class="tt">HtsViewerSdk</span> 是 Viewer 的统一公开入口。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md376"></a>
+1. 构造与所有权</h1>
+<div class="fragment"><div class="line"><a class="code hl_class" href="classhts_1_1viewer_1_1_hts_viewer_sdk.html">hts::viewer::HtsViewerSdk</a> viewer;</div>
+<div class="ttc" id="aclasshts_1_1viewer_1_1_hts_viewer_sdk_html"><div class="ttname"><a href="classhts_1_1viewer_1_1_hts_viewer_sdk.html">hts::viewer::HtsViewerSdk</a></div><div class="ttdef"><b>定义</b> HtsViewerSdk.h:20</div></div>
+</div><!-- fragment --><p><span class="tt">HtsViewerSdk</span>：</p>
+<ul>
+<li>禁止复制；</li>
+<li>支持移动；</li>
+<li>使用 RAII 管理自身公开对象生命周期。</li>
+</ul>
+<p>业务层不需要持有 Viewer 内部对象。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md377"></a>
+2. 初始化模式</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md378"></a>
+Standalone</h2>
+<div class="fragment"><div class="line">viewer.<a class="code hl_function" href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#a826e46fb65fe5705b589c445eb4f58f1">initializeStandalone</a>(x, y, width, height);</div>
+<div class="ttc" id="aclasshts_1_1viewer_1_1_hts_viewer_sdk_html_a826e46fb65fe5705b589c445eb4f58f1"><div class="ttname"><a href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#a826e46fb65fe5705b589c445eb4f58f1">hts::viewer::HtsViewerSdk::initializeStandalone</a></div><div class="ttdeci">bool initializeStandalone(int x, int y, int width, int height)</div></div>
+</div><!-- fragment --><p>适合独立 Viewer 程序或 SDK 最小验证。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md379"></a>
+Embedded</h2>
+<div class="fragment"><div class="line">viewer.<a class="code hl_function" href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#a8b40922897dc93cf70a088c714e18df9">initializeEmbedded</a>(x, y, width, height);</div>
+<div class="ttc" id="aclasshts_1_1viewer_1_1_hts_viewer_sdk_html_a8b40922897dc93cf70a088c714e18df9"><div class="ttname"><a href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#a8b40922897dc93cf70a088c714e18df9">hts::viewer::HtsViewerSdk::initializeEmbedded</a></div><div class="ttdeci">bool initializeEmbedded(int x, int y, int width, int height)</div></div>
+</div><!-- fragment --><p>适合嵌入宿主窗口。</p>
+<p>宿主窗口绑定与平台事件转发的完整实现应参考对应 Samples。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md380"></a>
+3. Frame</h1>
+<div class="fragment"><div class="line">viewer.<a class="code hl_function" href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#ae0ad5e034f9fea59485e3ff78cc1ed53">frame</a>();</div>
+<div class="ttc" id="aclasshts_1_1viewer_1_1_hts_viewer_sdk_html_ae0ad5e034f9fea59485e3ff78cc1ed53"><div class="ttname"><a href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#ae0ad5e034f9fea59485e3ff78cc1ed53">hts::viewer::HtsViewerSdk::frame</a></div><div class="ttdeci">bool frame()</div></div>
+</div><!-- fragment --><p>或者：</p>
+<div class="fragment"><div class="line">viewer.<a class="code hl_function" href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#ae0ad5e034f9fea59485e3ff78cc1ed53">frame</a>(simulationTime);</div>
+</div><!-- fragment --><p>业务程序应根据自己的消息循环持续驱动 Viewer。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md381"></a>
+4. Pending Frame Work</h1>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (viewer.<a class="code hl_function" href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#aca415f7857256fa1db1f0b08df45caab">hasPendingFrameWork</a>()) {</div>
+<div class="line">    <span class="comment">// Viewer 仍有需要后续 frame 推进的公开显示工作。</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aclasshts_1_1viewer_1_1_hts_viewer_sdk_html_aca415f7857256fa1db1f0b08df45caab"><div class="ttname"><a href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#aca415f7857256fa1db1f0b08df45caab">hts::viewer::HtsViewerSdk::hasPendingFrameWork</a></div><div class="ttdeci">bool hasPendingFrameWork() const</div></div>
+</div><!-- fragment --><p>这个接口用于帮助应用程序判断 Viewer 是否仍需要后续 Frame。</p>
+<p>不要根据该接口推断或依赖 SDK 内部具体任务切分方式。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md382"></a>
+5. Close 状态</h1>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (viewer.<a class="code hl_function" href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#a26335c6e944e9f5ae5404d21bae5bd25">shouldClose</a>()) {</div>
+<div class="line">    <span class="comment">// 结束 Viewer loop。</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aclasshts_1_1viewer_1_1_hts_viewer_sdk_html_a26335c6e944e9f5ae5404d21bae5bd25"><div class="ttname"><a href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#a26335c6e944e9f5ae5404d21bae5bd25">hts::viewer::HtsViewerSdk::shouldClose</a></div><div class="ttdeci">bool shouldClose() const</div></div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md383"></a>
+6. Resize</h1>
+<div class="fragment"><div class="line">viewer.<a class="code hl_function" href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#ab5a83103447687c28234454212507a67">resizeViewport</a>(x, y, width, height);</div>
+<div class="ttc" id="aclasshts_1_1viewer_1_1_hts_viewer_sdk_html_ab5a83103447687c28234454212507a67"><div class="ttname"><a href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#ab5a83103447687c28234454212507a67">hts::viewer::HtsViewerSdk::resizeViewport</a></div><div class="ttdeci">bool resizeViewport(int x, int y, int width, int height)</div></div>
+</div><!-- fragment --><p>窗口尺寸或 framebuffer 尺寸变化时应同步 Viewer。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md384"></a>
+7. Input</h1>
+<p>宿主输入通过：</p>
+<div class="fragment"><div class="line">viewer.<a class="code hl_function" href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#a2d9c542fb2b6f8f4d224fdce51654632">submitInput</a>(event);</div>
+<div class="ttc" id="aclasshts_1_1viewer_1_1_hts_viewer_sdk_html_a2d9c542fb2b6f8f4d224fdce51654632"><div class="ttname"><a href="classhts_1_1viewer_1_1_hts_viewer_sdk.html#a2d9c542fb2b6f8f4d224fdce51654632">hts::viewer::HtsViewerSdk::submitInput</a></div><div class="ttdeci">bool submitInput(const HtsInputEvent &amp;event)</div></div>
+</div><!-- fragment --><p>提交。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md385"></a>
+8. 初始化失败</h1>
+<p>如果初始化返回 <span class="tt">false</span>，应用程序应停止后续显示调用并检查：</p>
+<ul>
+<li>SDK Runtime 是否完整；</li>
+<li>授权状态；</li>
+<li>图形运行环境；</li>
+<li>日志信息。</li>
+</ul>
+<p>具体失败原因以 SDK 对应版本的日志为准。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

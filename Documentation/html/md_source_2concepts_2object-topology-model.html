@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: 对象与拓扑语义模型</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2concepts_2object-topology-model.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">对象与拓扑语义模型 </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md141"></a></p>
+<p>Hts Viewer SDK 的 CAD Display Data 不是单纯的三角形数组。业务程序可以在几何数据之外携带稳定的对象和拓扑标识。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md142"></a>
+1. 业务层级</h1>
+<p>Viewer 公开选择语义包括：</p>
+<div class="fragment"><div class="line">Object</div>
+<div class="line">Body</div>
+<div class="line">Face</div>
+<div class="line">Edge</div>
+<div class="line">Vertex</div>
+</div><!-- fragment --><p>相应选择模式由：</p>
+<div class="fragment"><div class="line"><span class="keyword">enum class</span> HtsSelectionMode</div>
+<div class="line">{</div>
+<div class="line">    Object,</div>
+<div class="line">    Body,</div>
+<div class="line">    Face,</div>
+<div class="line">    Edge,</div>
+<div class="line">    Vertex</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>定义。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md143"></a>
+2. 主要标识</h1>
+<p>公开数据常用以下字段建立业务对应关系：</p>
+<ul>
+<li><span class="tt">objectId</span></li>
+<li><span class="tt">bodyId</span></li>
+<li><span class="tt">solidTag</span></li>
+<li><span class="tt">faceTag</span></li>
+<li><span class="tt">edgeTag</span></li>
+<li><span class="tt">vertexTag</span></li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md144"></a>
+3. HtsSelectionTarget</h1>
+<p>拾取和选择结果通过：</p>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>HtsSelectionTarget</div>
+<div class="line">{</div>
+<div class="line">    HtsSelectionTargetType type;</div>
+<div class="line">    std::string objectId;</div>
+<div class="line">    std::string bodyId;</div>
+<div class="line">    <span class="keywordtype">int</span> faceTag;</div>
+<div class="line">    <span class="keywordtype">int</span> edgeTag;</div>
+<div class="line">    <span class="keywordtype">int</span> vertexTag;</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>表达。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md145"></a>
+Object Target</h2>
+<p>需要有效 <span class="tt">objectId</span>。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md146"></a>
+Body Target</h2>
+<p>需要：</p>
+<ul>
+<li><span class="tt">objectId</span></li>
+<li><span class="tt">bodyId</span></li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md147"></a>
+Face / Edge / Vertex Target</h2>
+<p>需要有效 <span class="tt">objectId</span> 与对应正数 Tag。</p>
+<p>SDK 提供：</p>
+<div class="fragment"><div class="line">isValidSelectionTarget(target);</div>
+<div class="line">isSameSelectionTarget(lhs, rhs);</div>
+</div><!-- fragment --><p>用于验证和比较目标。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md148"></a>
+4. 稳定 ID 的意义</h1>
+<p>业务系统应尽量保证同一个业务对象在增量更新前后继续使用相同的 <span class="tt">objectId</span> 和拓扑 Tag。</p>
+<p>这样业务层可以稳定执行：</p>
+<ul>
+<li>Select；</li>
+<li>Hide / Show；</li>
+<li>Style Override；</li>
+<li>Fly To；</li>
+<li>根据 Viewer 选择结果反查业务对象。</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md149"></a>
+5. Tag 不等于数组下标</h1>
+<p>建议把 <span class="tt">faceTag</span>、<span class="tt">edgeTag</span>、<span class="tt">vertexTag</span> 当作业务语义标识处理，而不是把它们与临时三角形数组下标绑定。</p>
+<p>如何生成稳定 Tag 由业务数据系统决定。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md150"></a>
+6. Body 数据</h1>
+<p><span class="tt">HtsDisplayBodyData</span> 可以记录：</p>
+<ul>
+<li><span class="tt">objectId</span></li>
+<li><span class="tt">bodyId</span></li>
+<li><span class="tt">solidTag</span></li>
+<li>Body Kind</li>
+<li>Bounds</li>
+<li>Face / Edge / Vertex Tag 集合</li>
+</ul>
+<p>用于表达 Object 内部的 Body 语义。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md151"></a>
+7. 推荐做法</h1>
+<p>业务层建立自己的映射：</p>
+<div class="fragment"><div class="line">Viewer objectId / topologyTag</div>
+<div class="line">              ↕</div>
+<div class="line">Business Entity / CAD Entity</div>
+</div><!-- fragment --><p>不要让 Viewer 内部实现对象成为业务主键。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

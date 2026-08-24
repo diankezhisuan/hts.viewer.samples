@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: 稳定业务标识</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2best-practices_2topology-ids.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">稳定业务标识 </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md110"></a></p>
+<p>稳定 ID 是 CAD/CAE Viewer 接入中最重要的数据契约之一。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md111"></a>
+1. Object ID</h1>
+<p><span class="tt">objectId</span> 应：</p>
+<ul>
+<li>非空；</li>
+<li>在业务生命周期内稳定；</li>
+<li>能够反查业务对象；</li>
+<li>不依赖临时内存地址。</li>
+</ul>
+<p>推荐：</p>
+<div class="fragment"><div class="line">数据库 UUID</div>
+<div class="line">业务 GUID</div>
+<div class="line">稳定模型对象 ID</div>
+</div><!-- fragment --><p>不推荐：</p>
+<div class="fragment"><div class="line">pointer address</div>
+<div class="line">临时 vector index</div>
+<div class="line">本次显示随机编号</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md112"></a>
+2. Body ID</h1>
+<p>同一个 Object 内存在多个 Body 时，每个 Body 应具有稳定 <span class="tt">bodyId</span>。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md113"></a>
+3. Topology Tag</h1>
+<p>Face / Edge / Vertex 的 Tag 应能够在当前业务数据版本中稳定定位对应拓扑实体。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md114"></a>
+4. Mesh ID / Part ID</h1>
+<p><span class="tt">meshId</span> 表示完整 Mesh Result。</p>
+<p><span class="tt">partId</span> 表示该 Mesh 中一个可独立管理的 Part。</p>
+<p>同一个 <span class="tt">meshId</span> 内 <span class="tt">partId</span> 必须唯一。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md115"></a>
+5. 更新</h1>
+<p>如果某个 Part 只是颜色改变：</p>
+<div class="fragment"><div class="line">partId should remain unchanged</div>
+</div><!-- fragment --><p>如果业务含义已经变成新的 Part，才应使用新的 ID。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md116"></a>
+6. Selection 回写</h1>
+<p>Viewer 返回：</p>
+<div class="fragment"><div class="line">HtsSelectionTarget</div>
+</div><!-- fragment --><p>业务系统根据稳定 ID / Tag 查询自己的实体。</p>
+<p>不要依赖 Viewer 私有对象指针进行反查。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

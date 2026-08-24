@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['data_0',['Data',['../md_source_2concepts_2display-vs-mesh.html#autotoc_md137',1,'1. Display Data'],['../md_source_2user-guide_2overlay.html#autotoc_md331',1,'1. Face Overlay Data'],['../md_source_2concepts_2display-vs-mesh.html#autotoc_md138',1,'2. Mesh Data'],['../md_source_2api_2hts-viewer-sdk.html#autotoc_md27',1,'4. Display Data'],['../md_source_2user-guide_2display-data.html#autotoc_md295',1,'4. Face Data'],['../md_source_2user-guide_2display-data.html#autotoc_md296',1,'5. Edge Data'],['../md_source_2user-guide_2display-data.html#autotoc_md297',1,'6. Vertex Data'],['../md_source_2user-guide_2display-data.html#autotoc_md298',1,'7. Body Data'],['../md_source_2user-guide_2display-data.html',1,'CAD / Geometry Display Data'],['../md_source_2glossary.html#autotoc_md225',1,'Display Data'],['../md_source_2concepts_2display-vs-mesh.html',1,'Display Data 与 Mesh Data'],['../md_source_2glossary.html#autotoc_md226',1,'Mesh Data']]],
+  ['data_20与_20mesh_20data_1',['Display Data 与 Mesh Data',['../md_source_2concepts_2display-vs-mesh.html',1,'']]],
+  ['debug_2',['1. Debug',['../md_source_2user-guide_2diagnostics.html#autotoc_md282',1,'']]],
+  ['default_5ftransparence_3',['7. DEFAULT_TRANSPARENCE',['../md_source_2user-guide_2settings.html#autotoc_md372',1,'']]],
+  ['demo_4',['Demo',['../md_source_2getting-started_2viewer-demo.html',1,'Hts Viewer Demo'],['../md_source_2glossary.html#autotoc_md235',1,'Viewer Demo'],['../index.html#autotoc_md244',1,'Viewer Demo']]],
+  ['demo_20与_20samples_20的区别_5',['1. Demo 与 Samples 的区别',['../md_source_2getting-started_2viewer-demo.html#autotoc_md219',1,'']]],
+  ['demo_20推断_20sdk_20依赖_6',['3. 不根据 Demo 推断 SDK 依赖',['../md_source_2best-practices_2integration-boundary.html#autotoc_md99',1,'']]],
+  ['demo_20的_20cad_20文件导入_7',['4. Demo 的 CAD 文件导入',['../md_source_2getting-started_2viewer-demo.html#autotoc_md222',1,'']]],
+  ['demo_20私有模块_8',['2. 不依赖 Demo 私有模块',['../md_source_2best-practices_2integration-boundary.html#autotoc_md98',1,'']]],
+  ['diagnostics_9',['Diagnostics',['../md_source_2api_2hts-viewer-sdk.html#autotoc_md49',1,'15. Diagnostics'],['../md_source_2user-guide_2diagnostics.html',1,'Diagnostics']]],
+  ['dimming_10',['10. Selection Dimming',['../md_source_2user-guide_2selection-picking.html#autotoc_md360',1,'']]],
+  ['display_11',['Display',['../md_source_2getting-started_2introduction.html#autotoc_md179',1,'3.1 CAD Display'],['../md_source_2getting-started_2introduction.html#autotoc_md180',1,'3.2 Mesh Display'],['../md_source_2user-guide_2mesh-display.html',1,'Mesh Display']]],
+  ['display_20data_12',['Display Data',['../md_source_2concepts_2display-vs-mesh.html#autotoc_md137',1,'1. Display Data'],['../md_source_2api_2hts-viewer-sdk.html#autotoc_md27',1,'4. Display Data'],['../md_source_2user-guide_2display-data.html',1,'CAD / Geometry Display Data'],['../md_source_2glossary.html#autotoc_md225',1,'Display Data']]],
+  ['display_20data_20与_20mesh_20data_13',['Display Data 与 Mesh Data',['../md_source_2concepts_2display-vs-mesh.html',1,'']]],
+  ['display_20mode_14',['7. Mesh Display Mode',['../md_source_2user-guide_2mesh-display.html#autotoc_md324',1,'']]],
+  ['display_20object_15',['1. Display Object',['../md_source_2concepts_2data-lifetime.html#autotoc_md130',1,'']]],
+  ['display_20object_20更新_16',['2. Display Object 更新',['../md_source_2best-practices_2incremental-update.html#autotoc_md90',1,'']]],
+  ['display_20options_17',['8. 全局 Mesh Display Options',['../md_source_2user-guide_2mesh-display.html#autotoc_md325',1,'']]],
+  ['display_20override_20reset_18',['9. Display Override Reset',['../md_source_2user-guide_2visibility.html#autotoc_md395',1,'']]],
+  ['display_20part_19',['Display Part',['../md_source_2user-guide_2visibility.html#autotoc_md393',1,'7. Object Display Part'],['../md_source_2api_2viewer-types.html#autotoc_md83',1,'Object Display Part']]],
+  ['display_20state_20',['9. Selection Display State',['../md_source_2user-guide_2selection-picking.html#autotoc_md359',1,'']]],
+  ['display_20stats_21',['2. Display Stats',['../md_source_2user-guide_2diagnostics.html#autotoc_md283',1,'']]],
+  ['display_20style_22',['Display Style',['../md_source_2user-guide_2appearance-material.html#autotoc_md250',1,'1. Viewer Display Style'],['../md_source_2api_2hts-viewer-sdk.html#autotoc_md37',1,'9. Display Style'],['../md_source_2api_2viewer-types.html#autotoc_md81',1,'Display Style'],['../md_source_2glossary.html#autotoc_md233',1,'Display Style']]],
+  ['dpi_23',['DPI',['../md_source_2concepts_2coordinate-and-screen.html#autotoc_md128',1,'3. 高 DPI'],['../md_source_2user-guide_2input-events.html#autotoc_md311',1,'8. DPI']]]
+];

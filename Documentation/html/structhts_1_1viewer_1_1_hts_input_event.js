@@ -1,0 +1,26 @@
+var structhts_1_1viewer_1_1_hts_input_event =
+[
+    [ "button", "structhts_1_1viewer_1_1_hts_input_event.html#a324ee95c79ff56471ed264a7e1f49c35", null ],
+    [ "entering", "structhts_1_1viewer_1_1_hts_input_event.html#a4b3d7cae56bbfe9aa1475a4b3d14959a", null ],
+    [ "height", "structhts_1_1viewer_1_1_hts_input_event.html#a85f5bbd0b8af3b9ab8d2f99208e552ec", null ],
+    [ "key", "structhts_1_1viewer_1_1_hts_input_event.html#a277202c8f83f5053f3e0831c19162329", null ],
+    [ "pressure", "structhts_1_1viewer_1_1_hts_input_event.html#acfbeb59a3ed0210f89468148be7857bc", null ],
+    [ "rotation", "structhts_1_1viewer_1_1_hts_input_event.html#aaf1db0a0580eca4059cb23904b7833f5", null ],
+    [ "scrollDeltaX", "structhts_1_1viewer_1_1_hts_input_event.html#a5d91d1e5f5500df0d02db69da3cf5533", null ],
+    [ "scrollDeltaY", "structhts_1_1viewer_1_1_hts_input_event.html#a17c2fbc91baeebd1aca269fc6dff5371", null ],
+    [ "scrollMotion", "structhts_1_1viewer_1_1_hts_input_event.html#a3c3e8a451436a110e15ec0feadd7a565", null ],
+    [ "tabletPointerType", "structhts_1_1viewer_1_1_hts_input_event.html#a4b6beab58da75c999832d78d9b9beaa3", null ],
+    [ "tapCount", "structhts_1_1viewer_1_1_hts_input_event.html#adb7d1f9a228d39d71e8401d76979a165", null ],
+    [ "tiltX", "structhts_1_1viewer_1_1_hts_input_event.html#a759bfc601068290526434996e08848c6", null ],
+    [ "tiltY", "structhts_1_1viewer_1_1_hts_input_event.html#aa1efefa380f07c5a8ca5e53b106c4130", null ],
+    [ "touchId", "structhts_1_1viewer_1_1_hts_input_event.html#a8cf4668cb7b4542ac56d47f65657b582", null ],
+    [ "touchPhase", "structhts_1_1viewer_1_1_hts_input_event.html#aab39c9f37991974930e6c35a4c8e452b", null ],
+    [ "type", "structhts_1_1viewer_1_1_hts_input_event.html#a056bcfb95c681dbecc9733aef378ebd0", null ],
+    [ "unmodifiedKey", "structhts_1_1viewer_1_1_hts_input_event.html#a11b396a2bf0fe9cd322af39900633427", null ],
+    [ "wheelDelta", "structhts_1_1viewer_1_1_hts_input_event.html#a81550524d2df4d2f3f1aa1cd15fe6ff1", null ],
+    [ "width", "structhts_1_1viewer_1_1_hts_input_event.html#ad49ab44b5725674c53e51108ce321b5e", null ],
+    [ "windowX", "structhts_1_1viewer_1_1_hts_input_event.html#a531854c5a8242e8b08f9edd5ec0c6225", null ],
+    [ "windowY", "structhts_1_1viewer_1_1_hts_input_event.html#a50d2838e8f7e421275e74bf8a7a7efe8", null ],
+    [ "x", "structhts_1_1viewer_1_1_hts_input_event.html#a6984c5537ead0dcffc8d51877da05f10", null ],
+    [ "y", "structhts_1_1viewer_1_1_hts_input_event.html#a96f82403debd96f72c525ca9d35e2d95", null ]
+];

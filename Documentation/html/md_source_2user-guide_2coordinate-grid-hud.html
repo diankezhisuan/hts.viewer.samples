@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: Coordinate System, Grid &amp; HUD</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2user-guide_2coordinate-grid-hud.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Coordinate System, Grid &amp; HUD </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md272"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md273"></a>
+1. World Axis</h1>
+<div class="fragment"><div class="line">viewer.setAxisVisible(<span class="keyword">true</span>);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md274"></a>
+2. Scale Bar</h1>
+<div class="fragment"><div class="line">viewer.setScaleBarVisible(<span class="keyword">true</span>);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md275"></a>
+3. HUD Axis</h1>
+<div class="fragment"><div class="line">viewer.setHudAxisVisible(<span class="keyword">true</span>);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md276"></a>
+4. Background</h1>
+<div class="fragment"><div class="line">viewer.setBackgroundColor(</div>
+<div class="line">    HtsColor4f{0.08f, 0.10f, 0.13f, 1.0f});</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md277"></a>
+5. Grid Plane Color</h1>
+<div class="fragment"><div class="line">viewer.setGridPlaneColor(</div>
+<div class="line">    HtsColor4f{0.25f, 0.28f, 0.32f, 1.0f});</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md278"></a>
+6. Coordinate System</h1>
+<div class="fragment"><div class="line">viewer.setCoordinateSystem(</div>
+<div class="line">    <span class="stringliteral">&quot;LocalCS&quot;</span>,</div>
+<div class="line">    origin,</div>
+<div class="line">    xDirection,</div>
+<div class="line">    yDirection,</div>
+<div class="line">    zDirection,</div>
+<div class="line">    20.0);</div>
+</div><!-- fragment --><p>参数由业务程序提供，Viewer 不要求业务层使用特定 CAD Kernel 的坐标系类型。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md279"></a>
+7. Grid Frame</h1>
+<div class="fragment"><div class="line">viewer.setGridFrame(</div>
+<div class="line">    origin,</div>
+<div class="line">    xDirection,</div>
+<div class="line">    yDirection,</div>
+<div class="line">    zDirection,</div>
+<div class="line">    HtsGridPlane::XOY);</div>
+</div><!-- fragment --><p>Plane：</p>
+<ul>
+<li><span class="tt">XOY</span></li>
+<li><span class="tt">YOZ</span></li>
+<li><span class="tt">XOZ</span></li>
+</ul>
+<p>查询：</p>
+<div class="fragment"><div class="line">HtsGridPlane plane = viewer.currentGridPlane();</div>
+<div class="line"><span class="keywordtype">double</span> spacing = viewer.currentGridSpacing();</div>
+</div><!-- fragment --><div class="image">
+<img src="coordinate-grid-hud.png" alt=""/>
+<div class="caption">
+Coordinate Grid HUD</div></div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md280"></a>
+8. 使用建议</h1>
+<p>业务层应保证：</p>
+<ul>
+<li>origin 有效；</li>
+<li>x/y/z 方向符合业务坐标系定义；</li>
+<li>Grid Plane 与当前建模工作平面一致。</li>
+</ul>
+<p>Viewer 只消费公开坐标数据，不要求业务程序暴露内部坐标系对象。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

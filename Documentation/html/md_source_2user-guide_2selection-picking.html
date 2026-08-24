@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: Selection &amp; Picking</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2user-guide_2selection-picking.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Selection &amp; Picking </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md350"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md351"></a>
+1. Selection Mode</h1>
+<div class="fragment"><div class="line">viewer.setSelectionMode(HtsSelectionMode::Face);</div>
+</div><!-- fragment --><p>支持：</p>
+<div class="fragment"><div class="line">Object</div>
+<div class="line">Body</div>
+<div class="line">Face</div>
+<div class="line">Edge</div>
+<div class="line">Vertex</div>
+</div><!-- fragment --><div class="image">
+<img src="selection-object-body-face-edge-vertex.png" alt=""/>
+<div class="caption">
+Selection Modes</div></div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md352"></a>
+2. Query Pick</h1>
+<p>如果只需要查询鼠标下对象，不改变 Selection：</p>
+<div class="fragment"><div class="line">HtsSelectionTarget target;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">if</span> (viewer.pickTarget(x, y, target)) {</div>
+<div class="line">    <span class="comment">// 使用 target。</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><p>显式指定模式并同时获取世界坐标：</p>
+<div class="fragment"><div class="line">HtsSelectionTarget target;</div>
+<div class="line">HtsVec3d worldPoint;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">if</span> (viewer.pickTarget(x, y, HtsSelectionMode::Face, target, worldPoint)) {</div>
+<div class="line">    <span class="comment">// 查询 Face 与命中点。</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md353"></a>
+3. Select At</h1>
+<div class="fragment"><div class="line">viewer.selectAt(x, y);</div>
+</div><!-- fragment --><p>追加选择：</p>
+<div class="fragment"><div class="line">viewer.selectAt(x, y, <span class="keyword">true</span>);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md354"></a>
+4. Box Select</h1>
+<div class="fragment"><div class="line">viewer.boxSelect(x0, y0, x1, y1);</div>
+</div><!-- fragment --><div class="image">
+<img src="selection-box-select.png" alt=""/>
+<div class="caption">
+Box Selection</div></div>
+<p>坐标应与 Viewer 使用的 framebuffer 坐标体系保持一致。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md355"></a>
+5. Select All</h1>
+<div class="fragment"><div class="line">viewer.selectAllVisible();</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md356"></a>
+6. Selection Query</h1>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> has = viewer.hasSelection();</div>
+<div class="line"> </div>
+<div class="line">HtsSelectionTarget primary = viewer.selectionTarget();</div>
+<div class="line"> </div>
+<div class="line">std::vector&lt;HtsSelectionTarget&gt; all = viewer.selectionTargets();</div>
+</div><!-- fragment --><p>多选业务逻辑应优先使用 <span class="tt">selectionTargets()</span>。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md357"></a>
+7. Programmatic Selection</h1>
+<div class="fragment"><div class="line">std::vector&lt;HtsSelectionTarget&gt; targets;</div>
+<div class="line"><span class="comment">// 填充 targets</span></div>
+<div class="line">viewer.setSelectionTargets(targets);</div>
+</div><!-- fragment --><p>每个 Target 应满足 <span class="tt">isValidSelectionTarget()</span>。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md358"></a>
+8. Clear Selection</h1>
+<div class="fragment"><div class="line">viewer.clearSelection();</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md359"></a>
+9. Selection Display State</h1>
+<div class="fragment"><div class="line">HtsSelectionDisplayState state = viewer.selectionDisplayState();</div>
+</div><!-- fragment --><p>可以查询当前 Selection 显示状态的公开摘要。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md360"></a>
+10. Selection Dimming</h1>
+<div class="fragment"><div class="line">viewer.setSelectionDimEnabled(<span class="keyword">true</span>);</div>
+</div><!-- fragment --><p>该接口只控制 Selection Dimming 是否启用，不改变 Selection Targets。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md361"></a>
+11. Hover</h1>
+<p>鼠标移动时：</p>
+<div class="fragment"><div class="line">viewer.updateHover(x, y);</div>
+</div><!-- fragment --><p>查询：</p>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (viewer.hasHover()) {</div>
+<div class="line">    HtsSelectionTarget target = viewer.hoverTarget();</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>清除：</p>
+<div class="fragment"><div class="line">viewer.clearHover();</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md362"></a>
+12. Feature Point</h1>
+<div class="fragment"><div class="line">HtsVec3d point;</div>
+<div class="line">HtsFeaturePointKind kind;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">if</span> (viewer.pickFeaturePoint(x, y, point, kind)) {</div>
+<div class="line">    <span class="comment">// Vertex / EdgeEndpoint / EdgeMidpoint / FaceCenter</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Feature Kind：</p>
+<ul>
+<li><span class="tt">Vertex</span></li>
+<li><span class="tt">EdgeEndpoint</span></li>
+<li><span class="tt">EdgeMidpoint</span></li>
+<li><span class="tt">FaceCenter</span></li>
+</ul>
+<p>可以配合 Preview Marker 显示：</p>
+<div class="fragment"><div class="line">viewer.upsertPreviewMarker(<span class="stringliteral">&quot;SnapPoint&quot;</span>, point, kind, <span class="keyword">false</span>);</div>
+</div><!-- fragment --><div class="image">
+<img src="selection-feature-marker.png" alt=""/>
+<div class="caption">
+Feature Marker</div></div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md363"></a>
+13. Screen Ray</h1>
+<div class="fragment"><div class="line">HtsVec3d origin;</div>
+<div class="line">HtsVec3d direction;</div>
+<div class="line">viewer.screenToWorldRay(x, y, origin, direction);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md364"></a>
+14. World to Screen</h1>
+<div class="fragment"><div class="line">HtsVec3d screenPoint;</div>
+<div class="line">viewer.projectWorldToScreen(worldPoint, screenPoint);</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

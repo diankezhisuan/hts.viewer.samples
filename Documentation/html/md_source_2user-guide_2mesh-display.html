@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: Mesh Display</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2user-guide_2mesh-display.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Mesh Display </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md313"></a></p>
+<p>Hts Viewer SDK 为 CAE Mesh 提供独立的数据模型与控制接口。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md314"></a>
+1. Mesh 类型</h1>
+<div class="fragment"><div class="line"><span class="keyword">enum class</span> HtsMeshElementType</div>
+<div class="line">{</div>
+<div class="line">    Surface,</div>
+<div class="line">    Volume</div>
+<div class="line">};</div>
+</div><!-- fragment --><p><span class="tt">elementType</span> 表示完整 Mesh 结果的业务类型，不是单个渲染 Primitive 类型。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md315"></a>
+2. HtsMeshDisplayData</h1>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>HtsMeshDisplayData</div>
+<div class="line">{</div>
+<div class="line">    std::string meshId;</div>
+<div class="line">    HtsMeshElementType elementType;</div>
+<div class="line">    std::vector&lt;HtsMeshPartData&gt; parts;</div>
+<div class="line">    <span class="keywordtype">bool</span> visible;</div>
+<div class="line">};</div>
+</div><!-- fragment --><p><span class="tt">meshId</span> 应稳定且非空。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md316"></a>
+3. Mesh Part</h1>
+<p><span class="tt">HtsMeshPartData</span> 是一个 Mesh 内可独立编辑、样式化和显隐的稳定 Part。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md317"></a>
+Triangle</h2>
+<p>当 <span class="tt">triangleIndices</span> 非空时：</p>
+<ul>
+<li>每 3 个 index 表示一个三角形；</li>
+<li>所有 index 必须小于 <span class="tt">vertices.size()</span>。</li>
+</ul>
+<p>当 <span class="tt">triangleIndices</span> 为空时：</p>
+<ul>
+<li><span class="tt">vertices</span> 按 triangle soup 解释；</li>
+<li><span class="tt">vertices.size()</span> 必须是 3 的倍数。</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md318"></a>
+Stable IDs</h2>
+<p>可选：</p>
+<ul>
+<li><span class="tt">vertexIds</span></li>
+<li><span class="tt">triangleIds</span></li>
+<li><span class="tt">edgeIds</span></li>
+</ul>
+<p>如果提供，数量必须与对应几何元素数量匹配。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md319"></a>
+Edge</h2>
+<p>当 <span class="tt">edgeIndices</span> 非空时：</p>
+<ul>
+<li>每 2 个 index 表示一条线段；</li>
+<li>index 必须小于 <span class="tt">edgeVertices.size()</span>。</li>
+</ul>
+<p>当 <span class="tt">edgeIndices</span> 为空时：</p>
+<ul>
+<li><span class="tt">edgeVertices</span> 按 line segment soup 解释；</li>
+<li>数量必须是 2 的倍数。</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md320"></a>
+最小数据要求</h2>
+<p>一个 Part 至少应包含一个 Triangle 或 Edge。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md321"></a>
+4. 完整 Mesh 提交</h1>
+<div class="fragment"><div class="line">HtsMeshDisplayData mesh;</div>
+<div class="line">mesh.meshId = <span class="stringliteral">&quot;FEM_Result&quot;</span>;</div>
+<div class="line">mesh.elementType = HtsMeshElementType::Volume;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 填充 parts...</span></div>
+<div class="line"> </div>
+<div class="line">viewer.upsertMeshData(mesh);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md322"></a>
+5. Part 增量更新</h1>
+<div class="fragment"><div class="line">viewer.upsertMeshPart(meshId, part);</div>
+</div><!-- fragment --><p>用于新增或替换单个 Part，而不要求业务层重新提交其他 Part。</p>
+<p>删除：</p>
+<div class="fragment"><div class="line">viewer.removeMeshPart(meshId, partId);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md323"></a>
+6. Staged Mesh Update</h1>
+<p>需要分阶段组织一个完整 Mesh 时：</p>
+<div class="fragment"><div class="line">viewer.beginMeshUpdate(meshId, <span class="keyword">true</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; part : parts) {</div>
+<div class="line">    <span class="keywordflow">if</span> (!viewer.appendMeshPart(meshId, part)) {</div>
+<div class="line">        viewer.cancelMeshUpdate(meshId);</div>
+<div class="line">        <span class="keywordflow">return</span>;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">if</span> (!viewer.endMeshUpdate(meshId)) {</div>
+<div class="line">    viewer.cancelMeshUpdate(meshId);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>公开契约说明：</p>
+<ul>
+<li><span class="tt">replaceExisting=true</span>：从空 staged 数据开始；</li>
+<li><span class="tt">replaceExisting=false</span>：基于当前 Mesh 快照开始，并只允许追加新的 Part ID；</li>
+<li>同一个 <span class="tt">meshId</span> 再次 begin 会替换此前未完成 staged transaction；</li>
+<li><span class="tt">endMeshUpdate()</span> 成功时发布 staged Mesh；</li>
+<li>如果 <span class="tt">endMeshUpdate()</span> 失败，当前 live mesh 和 staged transaction 保持不变，可由调用者重试或取消；</li>
+<li><span class="tt">cancelMeshUpdate()</span> 不改变当前正在显示的 Mesh。</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md324"></a>
+7. Mesh Display Mode</h1>
+<div class="fragment"><div class="line"><span class="keyword">enum class</span> HtsMeshDisplayMode</div>
+<div class="line">{</div>
+<div class="line">    ShadedWithMeshLines,</div>
+<div class="line">    Shaded,</div>
+<div class="line">    Wireframe,</div>
+<div class="line">    TransparentWithMeshLines</div>
+<div class="line">};</div>
+</div><!-- fragment --><div class="image">
+<img src="mesh-display-modes.png" alt=""/>
+<div class="caption">
+Mesh Display Modes</div></div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md325"></a>
+8. 全局 Mesh Display Options</h1>
+<div class="fragment"><div class="line">HtsMeshDisplayOptions options = viewer.meshDisplayOptions();</div>
+<div class="line">options.mode = HtsMeshDisplayMode::ShadedWithMeshLines;</div>
+<div class="line">options.opacity = 1.0f;</div>
+<div class="line"> </div>
+<div class="line">viewer.applyMeshDisplayOptions(options);</div>
+</div><!-- fragment --><p>公开设置包括：</p>
+<ul>
+<li>face / edge / volume edge color；</li>
+<li>selected colors；</li>
+<li>opacity；</li>
+<li>transparent opacity；</li>
+<li>edge width；</li>
+<li>volume edge width；</li>
+<li>edge softness；</li>
+<li>ambient / diffuse；</li>
+<li>volume edge；</li>
+<li>x-ray；</li>
+<li>lighting；</li>
+<li>two-sided；</li>
+<li>shader enabled。</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md326"></a>
+9. 可见性</h1>
+<p>完整 Mesh：</p>
+<div class="fragment"><div class="line">viewer.setMeshVisible(meshId, <span class="keyword">false</span>);</div>
+</div><!-- fragment --><p>Part：</p>
+<div class="fragment"><div class="line">viewer.setMeshPartsVisible(meshId, partIds, <span class="keyword">false</span>);</div>
+</div><!-- fragment --><p>只显示指定 Part：</p>
+<div class="fragment"><div class="line">viewer.showOnlyMeshParts(meshId, partIds);</div>
+</div><!-- fragment --><p>查询：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> visible = <span class="keyword">false</span>;</div>
+<div class="line">viewer.meshPartVisible(meshId, partId, visible);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md327"></a>
+10. Selection</h1>
+<div class="fragment"><div class="line">viewer.setSelectedMeshParts(meshId, partIds);</div>
+</div><!-- fragment --><p>清除：</p>
+<div class="fragment"><div class="line">viewer.clearMeshSelection(meshId);</div>
+</div><!-- fragment --><p>查询：</p>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> selected = viewer.selectedMeshPartIds(meshId);</div>
+</div><!-- fragment --><div class="image">
+<img src="mesh-part-selection.png" alt=""/>
+<div class="caption">
+Mesh Part Selection</div></div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md328"></a>
+11. Part Style</h1>
+<div class="fragment"><div class="line">HtsMeshPartStyle style;</div>
+<div class="line">style.hasFaceColor = <span class="keyword">true</span>;</div>
+<div class="line">style.faceColor = {1.0f, 0.5f, 0.1f, 1.0f};</div>
+<div class="line"> </div>
+<div class="line">viewer.setMeshPartStyle(meshId, partId, style);</div>
+</div><!-- fragment --><p>清除：</p>
+<div class="fragment"><div class="line">viewer.clearMeshPartStyle(meshId, partId);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md329"></a>
+12. Statistics</h1>
+<div class="fragment"><div class="line">HtsMeshStatistics stats = viewer.meshStatistics(meshId);</div>
+</div><!-- fragment --><p>包括：</p>
+<ul>
+<li>Part Count</li>
+<li>Vertex Count</li>
+<li>Triangle Count</li>
+<li>Volume Edge Count</li>
+<li>Estimated Memory Bytes </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

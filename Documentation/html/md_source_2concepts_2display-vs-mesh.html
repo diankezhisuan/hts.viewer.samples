@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: Display Data 与 Mesh Data</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2concepts_2display-vs-mesh.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Display Data 与 Mesh Data </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md136"></a></p>
+<p>Hts Viewer SDK 为 CAD/几何显示与 CAE 网格显示提供两套不同的公开数据模型。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md137"></a>
+1. Display Data</h1>
+<p>入口：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> upsertDisplayData(<span class="keyword">const</span> HtsDisplayMeshData&amp; data);</div>
+</div><!-- fragment --><p>适合：</p>
+<ul>
+<li>CAD 模型；</li>
+<li>几何对象；</li>
+<li>Face / Edge / Vertex 拓扑显示；</li>
+<li>材质和颜色；</li>
+<li>面向业务拓扑的选择。</li>
+</ul>
+<p>核心结构：</p>
+<div class="fragment"><div class="line">HtsDisplayMeshData</div>
+<div class="line">└── HtsDisplayObjectData</div>
+<div class="line">    ├── HtsDisplayBodyData</div>
+<div class="line">    ├── HtsDisplayFaceData</div>
+<div class="line">    ├── HtsDisplayEdgeData</div>
+<div class="line">    ├── HtsDisplayVertexData</div>
+<div class="line">    └── HtsImportedMaterialData</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md138"></a>
+2. Mesh Data</h1>
+<p>入口：</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> upsertMeshData(<span class="keyword">const</span> HtsMeshDisplayData&amp; data);</div>
+</div><!-- fragment --><p>适合：</p>
+<ul>
+<li>Surface Mesh；</li>
+<li>Volume Mesh；</li>
+<li>FEM / MLFMM 等离散网格；</li>
+<li>按 Part 管理的大规模网格；</li>
+<li>Mesh 专用显示风格。</li>
+</ul>
+<p>核心结构：</p>
+<div class="fragment"><div class="line">HtsMeshDisplayData</div>
+<div class="line">└── HtsMeshPartData</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md139"></a>
+3. 不建议混用</h1>
+<p>如果业务数据本质是 CAD Face / Edge / Vertex，优先使用 Display Data。</p>
+<p>如果业务数据本质是求解网格或独立 Mesh Part，优先使用 Mesh Data。</p>
+<p>这样可以更自然地使用对应的：</p>
+<ul>
+<li>选择；</li>
+<li>样式；</li>
+<li>可见性；</li>
+<li>更新；</li>
+<li>统计接口。</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md140"></a>
+4. 两者可以同时存在</h1>
+<p>典型 CAE 应用可以同时显示：</p>
+<div class="fragment"><div class="line">CAD Model</div>
+<div class="line">    +</div>
+<div class="line">Surface / Volume Mesh</div>
+<div class="line">    +</div>
+<div class="line">Preview</div>
+<div class="line">    +</div>
+<div class="line">Engineering Overlay</div>
+</div><!-- fragment --><p>它们通过各自公开 API 管理。</p>
+<p>本手册只说明这些公开能力之间的业务关系，不披露 Viewer 内部显示层的具体实现。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

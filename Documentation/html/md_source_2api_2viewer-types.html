@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: HtsViewerTypes API Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2api_2viewer-types.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">HtsViewerTypes API Reference </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md75"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md76"></a>
+Vector</h1>
+<div class="fragment"><div class="line">HtsVec3f</div>
+<div class="line">HtsVec3d</div>
+</div><!-- fragment --><p><span class="tt">HtsVec3f</span> 提供公开的 <span class="tt">+</span>、<span class="tt">-</span>、标量乘法操作。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md77"></a>
+Color</h1>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>HtsColor4f</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">float</span> r;</div>
+<div class="line">    <span class="keywordtype">float</span> g;</div>
+<div class="line">    <span class="keywordtype">float</span> b;</div>
+<div class="line">    <span class="keywordtype">float</span> a;</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>通常各分量范围为 <span class="tt">[0, 1]</span>。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md78"></a>
+Bounds</h1>
+<div class="fragment"><div class="line">HtsBounds3d</div>
+</div><!-- fragment --><p>字段：</p>
+<ul>
+<li><span class="tt">minimum</span></li>
+<li><span class="tt">maximum</span></li>
+<li><span class="tt">valid</span></li>
+</ul>
+<p>提供：</p>
+<div class="fragment"><div class="line">expandBy(HtsVec3f)</div>
+<div class="line">expandBy(HtsVec3d)</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md79"></a>
+Selection</h1>
+<div class="fragment"><div class="line">HtsSelectionMode</div>
+<div class="line">HtsSelectionTargetType</div>
+<div class="line">HtsSelectionTarget</div>
+<div class="line">HtsSelectionDisplayState</div>
+</div><!-- fragment --><p>辅助：</p>
+<div class="fragment"><div class="line">isValidSelectionTarget()</div>
+<div class="line">isSameSelectionTarget()</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md80"></a>
+Feature Point</h1>
+<div class="fragment"><div class="line"><span class="keyword">enum class</span> HtsFeaturePointKind</div>
+<div class="line">{</div>
+<div class="line">    None,</div>
+<div class="line">    Vertex,</div>
+<div class="line">    EdgeEndpoint,</div>
+<div class="line">    EdgeMidpoint,</div>
+<div class="line">    FaceCenter</div>
+<div class="line">};</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md81"></a>
+Display Style</h1>
+<div class="fragment"><div class="line">HtsDisplayStyle</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md82"></a>
+Grid</h1>
+<div class="fragment"><div class="line">HtsGridPlane</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md83"></a>
+Object Display Part</h1>
+<div class="fragment"><div class="line">HtsObjectDisplayPart</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md84"></a>
+Material</h1>
+<div class="fragment"><div class="line">HtsMaterialPreset</div>
+<div class="line">HtsRenderMaterial</div>
+<div class="line">HtsMaterialAppearance</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md85"></a>
+HtsMaterialAppearance</h2>
+<p><span class="tt">transparency</span>：</p>
+<div class="fragment"><div class="line">0.0 = opaque</div>
+<div class="line">1.0 = fully transparent</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md86"></a>
+Preview</h1>
+<div class="fragment"><div class="line">HtsPreviewLayer</div>
+<div class="line">HtsPreviewLinePattern</div>
+<div class="line">HtsPreviewStyle</div>
+<div class="line">HtsTransform</div>
+</div><!-- fragment --><p><span class="tt">HtsTransform</span> 使用 column-major 4×4 affine matrix。</p>
+<p>静态工厂：</p>
+<div class="fragment"><div class="line">HtsTransform::identity()</div>
+<div class="line">HtsTransform::translation(x, y, z)</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md87"></a>
+Input</h1>
+<div class="fragment"><div class="line">HtsInputEventType</div>
+<div class="line">HtsMouseButton</div>
+<div class="line">HtsScrollMotion</div>
+<div class="line">HtsTabletPointerType</div>
+<div class="line">HtsTouchPhase</div>
+<div class="line">HtsInputEvent</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

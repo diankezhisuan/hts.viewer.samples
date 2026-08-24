@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: Viewer Settings</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2user-guide_2settings.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Viewer Settings </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md365"></a></p>
+<p><span class="tt">HtsViewerSettings</span> 是每个 Viewer 实例独立拥有的外观设置值对象。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md366"></a>
+1. 读取</h1>
+<div class="fragment"><div class="line">HtsViewerSettings settings = viewer.settings();</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md367"></a>
+2. 修改</h1>
+<p>修改返回的副本本身不会自动改变 Viewer。</p>
+<p>例如：</p>
+<div class="fragment"><div class="line">HtsViewerSettings settings = viewer.settings();</div>
+<div class="line"> </div>
+<div class="line">settings.DEFAULT_SELECTED_COLOR =</div>
+<div class="line">    HtsColor4f{1.0f, 0.55f, 0.05f, 1.0f};</div>
+<div class="line"> </div>
+<div class="line">settings.DEFAULT_EDGE_LINE_WIDTH = 1.2f;</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md368"></a>
+3. 应用</h1>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (!viewer.applySettings(settings)) {</div>
+<div class="line">    <span class="comment">// settings 无效或应用失败。</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md369"></a>
+4. Validation</h1>
+<p>SDK 提供：</p>
+<div class="fragment"><div class="line">isValidViewerColor(color);</div>
+<div class="line">isValidViewerSettings(settings);</div>
+</div><!-- fragment --><p>建议业务 UI 在提交前先做 Validation。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md370"></a>
+5. 颜色范围</h1>
+<p><span class="tt">HtsColor4f</span> 的 RGBA 分量需要位于：</p>
+<div class="fragment"><div class="line">[0.0, 1.0]</div>
+</div><!-- fragment --><p>并且为有限数值。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md371"></a>
+6. 当前公开设置</h1>
+<p>颜色：</p>
+<ul>
+<li><span class="tt">DEFAULT_COLOR</span></li>
+<li><span class="tt">DEFAULT_VERTEX_COLOR</span></li>
+<li><span class="tt">DEFAULT_EDGE_COLOR</span></li>
+<li><span class="tt">DEFAULT_FACE_COLOR</span></li>
+<li><span class="tt">DEFAULT_SELECTED_COLOR</span></li>
+<li><span class="tt">DEFAULT_PREVIEW_COLOR</span></li>
+<li><span class="tt">DEFAULT_MOUSE_OVER_COLOR</span></li>
+<li><span class="tt">SCALE_TEXT_COLOR</span></li>
+<li><span class="tt">SCALE_POLYGON_START_COLOR</span></li>
+<li><span class="tt">SCALE_POLYGON_END_COLOR</span></li>
+<li><span class="tt">DEFAULT_WARNING_COLOR</span></li>
+</ul>
+<p>数值：</p>
+<ul>
+<li><span class="tt">DEFAULT_TRANSPARENCE</span></li>
+<li><span class="tt">DEFAULT_REFRESH_FREQ_IN_MS</span></li>
+<li><span class="tt">DEFAULT_EDGE_LINE_WIDTH</span></li>
+<li><span class="tt">DEFAULT_MOUSE_OVER_LINE_WIDTH</span></li>
+<li><span class="tt">DEFAULT_SELECTED_EDGE_LINE_WIDTH</span></li>
+<li><span class="tt">DEFAULT_SELECTED_FACE_OPACITY</span></li>
+<li><span class="tt">DEFAULT_SELECTED_VERTEX_POINT_SIZE</span></li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md372"></a>
+7. DEFAULT_TRANSPARENCE</h1>
+<p>这是兼容型百分比字段：</p>
+<div class="fragment"><div class="line">0 ~ 100</div>
+<div class="line">0 = opaque</div>
+</div><!-- fragment --><p>注意它与 <span class="tt">HtsMaterialAppearance::transparency</span> 的 <span class="tt">0.0 ~ 1.0</span> 浮点约定不同。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md373"></a>
+8. INI</h1>
+<p>加载并应用：</p>
+<div class="fragment"><div class="line">viewer.loadSettings(filePath);</div>
+</div><!-- fragment --><p>保存当前 Viewer 设置：</p>
+<div class="fragment"><div class="line">viewer.saveSettings(filePath);</div>
+</div><!-- fragment --><p>公开契约说明 <span class="tt">loadSettings()</span> 在成功时以完整设置值应用。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md374"></a>
+9. 多 Viewer</h1>
+<p>不要假设 Settings 是全局单例。</p>
+<div class="fragment"><div class="line">viewerA.applySettings(settingsA);</div>
+<div class="line">viewerB.applySettings(settingsB);</div>
+</div><!-- fragment --><p>两个 Viewer 可以拥有不同设置。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

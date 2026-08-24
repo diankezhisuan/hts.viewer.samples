@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: Preview</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2user-guide_2preview.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Preview </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md338"></a></p>
+<p>Preview 用于临时建模、拖拽、移动、旋转、阵列、吸附提示等交互显示。</p>
+<p>Preview 与正式 Display Data 使用不同的生命周期。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md339"></a>
+1. 基本 Preview</h1>
+<div class="fragment"><div class="line">HtsPreviewStyle style;</div>
+<div class="line">style.color = {0.0f, 0.65f, 1.0f, 0.35f};</div>
+<div class="line">style.drawFaces = <span class="keyword">true</span>;</div>
+<div class="line">style.drawEdges = <span class="keyword">true</span>;</div>
+<div class="line"> </div>
+<div class="line">viewer.upsertPreview(</div>
+<div class="line">    <span class="stringliteral">&quot;MovePreview&quot;</span>,</div>
+<div class="line">    previewData,</div>
+<div class="line">    style);</div>
+</div><!-- fragment --><p><span class="tt">tag</span> 是 Preview 的稳定身份。</p>
+<p>再次使用相同 <span class="tt">tag</span> 调用 <span class="tt">upsertPreview()</span> 表示添加或替换该 Preview。</p>
+<div class="image">
+<img src="preview-geometry.png" alt=""/>
+<div class="caption">
+Preview Geometry</div></div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md340"></a>
+2. Preview Style</h1>
+<p><span class="tt">HtsPreviewStyle</span> 包括：</p>
+<ul>
+<li><span class="tt">color</span></li>
+<li><span class="tt">lineWidth</span></li>
+<li><span class="tt">drawFaces</span></li>
+<li><span class="tt">drawEdges</span></li>
+<li><span class="tt">useLighting</span></li>
+<li><span class="tt">depthTest</span></li>
+<li><span class="tt">depthWrite</span></li>
+<li><span class="tt">layer</span></li>
+<li><span class="tt">linePattern</span></li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md341"></a>
+Layer</h2>
+<div class="fragment"><div class="line"><span class="keyword">enum class</span> HtsPreviewLayer</div>
+<div class="line">{</div>
+<div class="line">    Scene,</div>
+<div class="line">    Overlay</div>
+<div class="line">};</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md342"></a>
+Line Pattern</h2>
+<div class="fragment"><div class="line"><span class="keyword">enum class</span> HtsPreviewLinePattern</div>
+<div class="line">{</div>
+<div class="line">    Solid,</div>
+<div class="line">    Dashed</div>
+<div class="line">};</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md343"></a>
+3. Preview Transform</h1>
+<div class="fragment"><div class="line">viewer.setPreviewTransform(</div>
+<div class="line">    <span class="stringliteral">&quot;MovePreview&quot;</span>,</div>
+<div class="line">    HtsTransform::translation(5.0, 0.0, 0.0));</div>
+</div><!-- fragment --><p><span class="tt">HtsTransform</span> 是 column-major 4×4 affine transform。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md344"></a>
+4. Visible</h1>
+<div class="fragment"><div class="line">viewer.setPreviewVisible(<span class="stringliteral">&quot;MovePreview&quot;</span>, <span class="keyword">false</span>);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md345"></a>
+5. Has Preview</h1>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (viewer.hasPreview(<span class="stringliteral">&quot;MovePreview&quot;</span>)) {</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md346"></a>
+6. Preview Axis</h1>
+<div class="fragment"><div class="line">viewer.upsertPreviewAxis(</div>
+<div class="line">    <span class="stringliteral">&quot;LocalAxis&quot;</span>,</div>
+<div class="line">    origin,</div>
+<div class="line">    xDirection,</div>
+<div class="line">    yDirection,</div>
+<div class="line">    zDirection,</div>
+<div class="line">    20.0);</div>
+</div><!-- fragment --><p>适合：</p>
+<ul>
+<li>坐标系创建；</li>
+<li>变换操作；</li>
+<li>局部轴预览。</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md347"></a>
+7. Preview Marker</h1>
+<div class="fragment"><div class="line">viewer.upsertPreviewMarker(</div>
+<div class="line">    <span class="stringliteral">&quot;SnapPoint&quot;</span>,</div>
+<div class="line">    worldPoint,</div>
+<div class="line">    HtsFeaturePointKind::EdgeMidpoint,</div>
+<div class="line">    <span class="keyword">false</span>);</div>
+</div><!-- fragment --><div class="image">
+<img src="preview-axis-marker.png" alt=""/>
+<div class="caption">
+Preview Axis and Marker</div></div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md348"></a>
+8. Remove</h1>
+<div class="fragment"><div class="line">viewer.removePreview(<span class="stringliteral">&quot;MovePreview&quot;</span>);</div>
+</div><!-- fragment --><p>全部：</p>
+<div class="fragment"><div class="line">viewer.clearPreviews();</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md349"></a>
+9. 推荐使用原则</h1>
+<p>不要为了移动 Preview 而持续重建正式 Display Object。</p>
+<p>如果 Preview 几何不变而只是位置变化，优先使用 <span class="tt">setPreviewTransform()</span>。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

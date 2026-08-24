@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: 数据生命周期</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2concepts_2data-lifetime.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">数据生命周期 </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md129"></a></p>
+<p>本章从公开 API 角度说明 Viewer 数据如何进入、更新和移除。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md130"></a>
+1. Display Object</h1>
+<div class="fragment"><div class="line">create DTO</div>
+<div class="line">   ↓</div>
+<div class="line">upsertDisplayData()</div>
+<div class="line">   ↓</div>
+<div class="line">update with same business identity</div>
+<div class="line">   ↓</div>
+<div class="line">removeDisplayObject(s)</div>
+</div><!-- fragment --><p><span class="tt">clearScene()</span> 用于清除正式场景显示数据。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md131"></a>
+2. Mesh</h1>
+<p>完整 Mesh：</p>
+<div class="fragment"><div class="line">HtsMeshDisplayData</div>
+<div class="line">   ↓</div>
+<div class="line">upsertMeshData()</div>
+<div class="line">   ↓</div>
+<div class="line">upsertMeshPart() / visibility / style</div>
+<div class="line">   ↓</div>
+<div class="line">removeMeshPart() / removeMesh()</div>
+</div><!-- fragment --><p>全部 Mesh：</p>
+<div class="fragment"><div class="line">viewer.clearMeshes();</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md132"></a>
+3. Staged Mesh Update</h1>
+<p>大 Mesh 可通过：</p>
+<div class="fragment"><div class="line">beginMeshUpdate</div>
+<div class="line">      ↓</div>
+<div class="line">appendMeshPart</div>
+<div class="line">      ↓</div>
+<div class="line">appendMeshPart</div>
+<div class="line">      ↓</div>
+<div class="line">endMeshUpdate</div>
+</div><!-- fragment --><p>在提交前放弃：</p>
+<div class="fragment"><div class="line">cancelMeshUpdate(meshId);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md133"></a>
+4. Preview</h1>
+<p>Preview 使用稳定 <span class="tt">tag</span> 管理：</p>
+<div class="fragment"><div class="line">upsertPreview(tag)</div>
+<div class="line">      ↓</div>
+<div class="line">setPreviewTransform / setPreviewVisible</div>
+<div class="line">      ↓</div>
+<div class="line">removePreview(tag)</div>
+</div><!-- fragment --><p>全部清除：</p>
+<div class="fragment"><div class="line">clearPreviews();</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md134"></a>
+5. Overlay</h1>
+<p>Face Overlay 使用业务 <span class="tt">key</span>：</p>
+<div class="fragment"><div class="line">showBoundaryFaceOverlay(key)</div>
+<div class="line">showExcitationFaceOverlay(key)</div>
+<div class="line">      ↓</div>
+<div class="line">removeFaceOverlay(key)</div>
+</div><!-- fragment --><p>全部清除：</p>
+<div class="fragment"><div class="line">clearFaceOverlays();</div>
+</div><!-- fragment --><p>Plane Wave Glyph 使用 <span class="tt">id</span> 独立管理。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md135"></a>
+6. 业务建议</h1>
+<p>业务程序应明确区分：</p>
+<ul>
+<li>Persistent Model Data；</li>
+<li>Mesh Result；</li>
+<li>Temporary Preview；</li>
+<li>Engineering Annotation。</li>
+</ul>
+<p>不要为了临时交互效果反复修改正式业务几何。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

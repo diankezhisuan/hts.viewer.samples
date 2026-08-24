@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: Engineering Overlay</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2user-guide_2overlay.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Engineering Overlay </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md330"></a></p>
+<p>Hts Viewer SDK 提供面向工程软件的公开 Overlay / Annotation 能力。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md331"></a>
+1. Face Overlay Data</h1>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>HtsFaceOverlayData</div>
+<div class="line">{</div>
+<div class="line">    std::string objectId;</div>
+<div class="line">    <span class="keywordtype">int</span> faceTag;</div>
+<div class="line">    std::vector&lt;HtsVec3d&gt; lineVertices;</div>
+<div class="line">    std::vector&lt;HtsVec3d&gt; fillTriangleVertices;</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>其中：</p>
+<ul>
+<li><span class="tt">lineVertices</span> 按两点一组表示线段；</li>
+<li><span class="tt">fillTriangleVertices</span> 表示预计算填充三角形；</li>
+<li><span class="tt">objectId + faceTag</span> 用于关联业务 Face。</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md332"></a>
+2. Boundary Overlay</h1>
+<div class="fragment"><div class="line">viewer.showBoundaryFaceOverlay(</div>
+<div class="line">    <span class="stringliteral">&quot;Boundary_Port1&quot;</span>,</div>
+<div class="line">    data);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md333"></a>
+3. Excitation Overlay</h1>
+<div class="fragment"><div class="line">viewer.showExcitationFaceOverlay(</div>
+<div class="line">    <span class="stringliteral">&quot;Excitation_1&quot;</span>,</div>
+<div class="line">    data);</div>
+</div><!-- fragment --><div class="image">
+<img src="overlay-boundary-excitation.png" alt=""/>
+<div class="caption">
+Boundary and Excitation</div></div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md334"></a>
+4. Remove</h1>
+<p>按 key 删除：</p>
+<div class="fragment"><div class="line">viewer.removeFaceOverlay(key);</div>
+</div><!-- fragment --><p>全部：</p>
+<div class="fragment"><div class="line">viewer.clearFaceOverlays();</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md335"></a>
+5. Plane Wave Glyph</h1>
+<div class="fragment"><div class="line">HtsPlaneWaveGlyph glyph;</div>
+<div class="line">glyph.id = <span class="stringliteral">&quot;PlaneWave_1&quot;</span>;</div>
+<div class="line">glyph.anchor = {0.0, 0.0, 0.0};</div>
+<div class="line">glyph.propagationDirection = {0.0, 0.0, -1.0};</div>
+<div class="line">glyph.electricDirection = {1.0, 0.0, 0.0};</div>
+<div class="line"> </div>
+<div class="line">viewer.showPlaneWaveGlyph(glyph);</div>
+</div><!-- fragment --><p>删除：</p>
+<div class="fragment"><div class="line">viewer.removePlaneWaveGlyph(<span class="stringliteral">&quot;PlaneWave_1&quot;</span>);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md336"></a>
+6. Plane Wave 主要参数</h1>
+<p>公开参数包括：</p>
+<ul>
+<li>anchor；</li>
+<li>propagation direction；</li>
+<li>electric direction；</li>
+<li>automatic / fixed world size；</li>
+<li>theta / phi sweep；</li>
+<li>polarization angle；</li>
+<li>amplitude；</li>
+<li>phase；</li>
+<li>polarization；</li>
+<li>ellipticity；</li>
+<li>propagation / electric / magnetic / wavefront / label 开关；</li>
+<li>always on top；</li>
+<li>各部分颜色。</li>
+</ul>
+<p>Polarization：</p>
+<div class="fragment"><div class="line">LeftElliptical</div>
+<div class="line">Linear</div>
+<div class="line">RightElliptical</div>
+</div><!-- fragment --><div class="image">
+<img src="overlay-plane-wave.png" alt=""/>
+<div class="caption">
+Plane Wave</div></div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md337"></a>
+7. 业务建议</h1>
+<p>Overlay 应用于业务标注，而不是替代正式 CAD Geometry。</p>
+<p>Boundary / Excitation 的 key 应由业务层稳定管理，以便更新和删除。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

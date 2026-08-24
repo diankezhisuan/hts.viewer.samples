@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: Camera &amp; View</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2user-guide_2camera-view.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Camera &amp; View </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md264"></a></p>
+<p>Hts Viewer SDK 提供常用工程视图控制接口。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md265"></a>
+1. Fit View</h1>
+<div class="fragment"><div class="line">viewer.fitView();</div>
+</div><!-- fragment --><p>用于让当前模型适配视图。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md266"></a>
+2. Fit Selection</h1>
+<div class="fragment"><div class="line">viewer.fitSelection();</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md267"></a>
+3. 标准视图</h1>
+<div class="fragment"><div class="line">viewer.setTopView();</div>
+<div class="line">viewer.setBottomView();</div>
+<div class="line">viewer.setFrontView();</div>
+<div class="line">viewer.setRearView();</div>
+<div class="line">viewer.setRightView();</div>
+<div class="line">viewer.setLeftView();</div>
+<div class="line">viewer.setIsoView();</div>
+</div><!-- fragment --><div class="image">
+<img src="camera-standard-views.png" alt=""/>
+<div class="caption">
+Standard Views</div></div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md268"></a>
+4. Selection Center</h1>
+<div class="fragment"><div class="line">viewer.setViewCenterToSelection();</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md269"></a>
+5. Zoom Around Model Center</h1>
+<div class="fragment"><div class="line">viewer.zoomAroundModelCenter(1.2);</div>
+</div><!-- fragment --><p><span class="tt">factor</span> 的具体交互体验应以当前 SDK 版本 Demo 为准。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md270"></a>
+6. Fly To Targets</h1>
+<div class="fragment"><div class="line">viewer.flyToTargets(targets);</div>
+</div><!-- fragment --><p>适合业务树、搜索结果、错误定位、Boundary/Excitation 导航等场景。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md271"></a>
+7. 推荐交互</h1>
+<p>对于业务树选中对象后定位，典型流程：</p>
+<div class="fragment"><div class="line">viewer.setSelectionTargets(targets);</div>
+<div class="line">viewer.flyToTargets(targets);</div>
+</div><!-- fragment --><p>或者：</p>
+<div class="fragment"><div class="line">viewer.fitSelection();</div>
+</div><!-- fragment --><p>根据产品交互选择其中一种。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

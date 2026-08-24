@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: 大模型使用建议</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2best-practices_2large-models.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">大模型使用建议 </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md102"></a></p>
+<p>本章只从**公开 API 使用方式**讨论大模型，不披露 Viewer 私有性能实现。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md103"></a>
+1. 保持业务 ID 稳定</h1>
+<p>对于长期存在的 Object / Mesh Part，保持：</p>
+<ul>
+<li>objectId</li>
+<li>bodyId</li>
+<li>faceTag</li>
+<li>edgeTag</li>
+<li>vertexTag</li>
+<li>meshId</li>
+<li>partId</li>
+</ul>
+<p>稳定。</p>
+<p>不要仅因为某个对象颜色改变就为它生成新的 objectId。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md104"></a>
+2. 使用增量 API</h1>
+<p>局部对象变化：</p>
+<div class="fragment"><div class="line">upsertDisplayData(...)</div>
+</div><!-- fragment --><p>Mesh Part 变化：</p>
+<div class="fragment"><div class="line">upsertMeshPart(...)</div>
+</div><!-- fragment --><p>不要把：</p>
+<div class="fragment"><div class="line">clearScene();</div>
+</div><!-- fragment --><p>作为普通属性修改和局部修改的默认操作。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md105"></a>
+3. 大 Mesh 使用 Part</h1>
+<p>把业务上可独立更新、显隐或选择的 Mesh 区域组织为稳定 <span class="tt">partId</span>。</p>
+<p>Part 粒度应来自业务和更新需求，不需要为了猜测 Viewer 内部实现而人为模拟私有渲染分组。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md106"></a>
+4. 分阶段提交</h1>
+<p>当业务侧生成 Mesh 数据需要较长时间或数据量较大，可使用：</p>
+<div class="fragment"><div class="line">beginMeshUpdate()</div>
+<div class="line">appendMeshPart()</div>
+<div class="line">endMeshUpdate()</div>
+</div><!-- fragment --><p>保证业务层先准备 staged 数据，再显式发布。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md107"></a>
+5. Frame</h1>
+<p>如果：</p>
+<div class="fragment"><div class="line">viewer.hasPendingFrameWork()</div>
+</div><!-- fragment --><p>返回 <span class="tt">true</span>，应用程序仍应继续正常驱动 Frame。</p>
+<p>不要阻塞 GUI 线程等待 Viewer 私有执行细节。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md108"></a>
+6. 不在 UI 线程进行重型 CAD 转换</h1>
+<p>Viewer 接口只接收已经准备好的 DTO。</p>
+<p>业务应用可在合适的后台任务中准备纯业务数据，但：</p>
+<ul>
+<li>Qt UI 更新；</li>
+<li>Viewer API 调用的线程要求；</li>
+</ul>
+<p>应遵循当前 SDK 与 Sample 的正式约定。</p>
+<p>在没有公开线程安全声明的接口上，不要自行假定可以从任意工作线程并发调用。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md109"></a>
+7. 量化性能</h1>
+<p>具体最大模型规模、FPS、首帧时间和显存占用，应以当前 Release 的 Benchmark 为准。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

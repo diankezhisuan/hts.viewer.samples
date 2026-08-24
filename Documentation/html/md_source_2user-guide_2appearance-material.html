@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hts Viewer SDK: Appearance, Transparency &amp; Material</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<meta name="doxygen-page-layout" content="1" />
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="htsviewer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Hts Viewer SDK<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Industrial 3D Visualization SDK for CAD / CAE</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_source_2user-guide_2appearance-material.html','',''); });
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": true
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Appearance, Transparency &amp; Material </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md249"></a></p>
+<p>Viewer 的公开外观接口可以分为：</p>
+<ol type="1">
+<li>Viewer Display Style；</li>
+<li>Persistent Target / Object Appearance；</li>
+<li>Selection Appearance；</li>
+<li>Mesh Appearance。</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md250"></a>
+1. Viewer Display Style</h1>
+<div class="fragment"><div class="line">viewer.setDisplayStyle(HtsDisplayStyle::EngineeringDefault);</div>
+</div><!-- fragment --><p>支持：</p>
+<ul>
+<li><span class="tt">Shaded</span></li>
+<li><span class="tt">ShadedWithCadEdges</span></li>
+<li><span class="tt">TriangleWireframe</span></li>
+<li><span class="tt">TransparentAirBox</span></li>
+<li><span class="tt">EngineeringDefault</span></li>
+</ul>
+<p>独立控制：</p>
+<div class="fragment"><div class="line">viewer.showCadEdges(<span class="keyword">true</span>);</div>
+<div class="line">viewer.showTriangleWireframe(<span class="keyword">false</span>);</div>
+<div class="line">viewer.setAirBoxTransparent(<span class="keyword">true</span>);</div>
+</div><!-- fragment --><p>状态查询：</p>
+<div class="fragment"><div class="line">viewer.cadEdgesVisible();</div>
+<div class="line">viewer.triangleWireframeVisible();</div>
+<div class="line">viewer.airBoxTransparent();</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md251"></a>
+2. Target Color &amp; Transparency</h1>
+<div class="fragment"><div class="line">HtsColor4f color{0.2f, 0.6f, 0.9f, 1.0f};</div>
+<div class="line"> </div>
+<div class="line">viewer.setTargetColorAndTransparency(</div>
+<div class="line">    target,</div>
+<div class="line">    color,</div>
+<div class="line">    0.25f);</div>
+</div><!-- fragment --><p>查询：</p>
+<div class="fragment"><div class="line">HtsColor4f currentColor;</div>
+<div class="line"><span class="keywordtype">float</span> transparency = 0.0f;</div>
+<div class="line"> </div>
+<div class="line">viewer.targetColorAndTransparency(</div>
+<div class="line">    target,</div>
+<div class="line">    currentColor,</div>
+<div class="line">    transparency);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md252"></a>
+3. Object Batch Appearance</h1>
+<div class="fragment"><div class="line">viewer.setObjectsColorAndTransparency(</div>
+<div class="line">    objectIds,</div>
+<div class="line">    color,</div>
+<div class="line">    0.30f);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md253"></a>
+4. PBR Appearance</h1>
+<div class="fragment"><div class="line">HtsMaterialAppearance appearance;</div>
+<div class="line">appearance.color = {0.72f, 0.74f, 0.78f, 1.0f};</div>
+<div class="line">appearance.transparency = 0.0f;</div>
+<div class="line">appearance.metallic = 0.85f;</div>
+<div class="line">appearance.roughness = 0.30f;</div>
+<div class="line">appearance.specular = 0.55f;</div>
+<div class="line"> </div>
+<div class="line">viewer.setTargetMaterialAppearance(target, appearance);</div>
+</div><!-- fragment --><p>多个 Object：</p>
+<div class="fragment"><div class="line">viewer.setObjectsMaterialAppearance(objectIds, appearance);</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md254"></a>
+Transparency 语义</h2>
+<p><span class="tt">HtsMaterialAppearance::transparency</span> 使用 CAD 常见约定：</p>
+<div class="fragment"><div class="line">0.0 = 完全不透明</div>
+<div class="line">1.0 = 完全透明</div>
+</div><!-- fragment --><p>这里的 <span class="tt">transparency</span> 是该 API 的权威透明度值。</p>
+<p>不要把它与 <span class="tt">opacity</span> 的方向混淆。</p>
+<div class="image">
+<img src="material-transparency.png" alt=""/>
+<div class="caption">
+Transparency</div></div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md255"></a>
+5. Material Preset</h1>
+<p>Selection 可以使用：</p>
+<div class="fragment"><div class="line">viewer.setSelectedMaterialPreset(HtsMaterialPreset::Aluminum);</div>
+</div><!-- fragment --><p>公开 Preset 包括：</p>
+<ul>
+<li>EngineeringDefault</li>
+<li>NeutralSolid</li>
+<li>AirBoxTransparent</li>
+<li>PECMetal</li>
+<li>Aluminum</li>
+<li>Copper</li>
+<li>Dielectric</li>
+<li>FR4</li>
+<li>RubberAbsorber</li>
+<li>Custom</li>
+<li>SelectedFill</li>
+<li>HoverOutline</li>
+<li>CADBoundaryEdge</li>
+<li>TriangleWireframe</li>
+<li>VertexCandidate</li>
+<li>VertexHover</li>
+<li>VertexSelected</li>
+<li>Preview</li>
+<li>OverlayBoundary</li>
+<li>OverlayExcitation</li>
+</ul>
+<p>其中部分预设主要用于 Viewer 工程交互效果，业务程序通常只需要使用与自身场景相关的公开预设。</p>
+<div class="image">
+<img src="material-presets.png" alt=""/>
+<div class="caption">
+Material Presets</div></div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md256"></a>
+6. Custom Render Material</h1>
+<div class="fragment"><div class="line">HtsRenderMaterial material;</div>
+<div class="line">material.baseColor = {0.7f, 0.4f, 0.2f, 1.0f};</div>
+<div class="line">material.metallic = 0.7f;</div>
+<div class="line">material.roughness = 0.35f;</div>
+<div class="line">material.specular = 0.5f;</div>
+<div class="line">material.opacity = 1.0f;</div>
+<div class="line"> </div>
+<div class="line">viewer.setSelectedCustomMaterial(material);</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md257"></a>
+7. Selection Appearance</h1>
+<div class="fragment"><div class="line">viewer.setSelectedColor(color);</div>
+<div class="line">viewer.setSelectedOpacity(0.6f);</div>
+<div class="line">viewer.setSelectedTransparent();</div>
+<div class="line">viewer.resetSelectedStyle();</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md258"></a>
+8. Persistent 与 Interaction Style</h1>
+<p>推荐业务上区分：</p>
+<ul>
+<li>持久对象材质：使用 Target / Object Appearance；</li>
+<li>当前交互效果：使用 Selection API；</li>
+<li>临时建模效果：使用 Preview API。</li>
+</ul>
+<p>这样可以避免业务材质和临时交互状态互相覆盖。 </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

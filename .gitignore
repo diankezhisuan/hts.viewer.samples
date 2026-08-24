@@ -1,0 +1,24 @@
+# CMake and IDE output
+/build*/
+**/build*/
+**/cmake-build-*/
+/out/
+/install/
+/.vs/
+/CMakeUserPresets.json
+
+# Generated packages and verification artifacts
+/*.7z
+/*.zip
+/_CPack_Packages/
+
+# Runtime license artifacts (keep the sample directory itself)
+/samples/license/*.lic
+/samples/license/*.machine
+!/samples/license/.gitkeep
+
+# Editor and OS files
+*.user
+*.suo
+.DS_Store
+Thumbs.db
