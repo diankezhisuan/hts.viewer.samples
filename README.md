@@ -1,8 +1,7 @@
 # Hts Viewer SDK 2.0 Samples
 
-Hts Viewer SDK 是面向 CAD、CAE 和工业三维软件的 C++ 可视化 SDK。本仓库是面向
-客户和合作开发者的独立交付工程：只链接预编译 Viewer SDK，不包含也不编译 Viewer
-内核源码。
+Hts Viewer SDK 是面向 CAD、CAE 和工业三维软件的 C++ 三维可视化显示引擎 SDK。本仓库是面向
+客户和合作开发者的独立交付工程。
 
 ## 第一次使用
 
