@@ -27,6 +27,7 @@ int main(int argc, char* argv[])
     QApplication app(argc, argv);
     app.setApplicationName(QStringLiteral("HtsViewerDemo"));
     app.setApplicationDisplayName(QStringLiteral("Hts Viewer SDK"));
+    app.setApplicationVersion(QStringLiteral(HTS_VIEWER_DEMO_VERSION));
     app.setOrganizationName(QStringLiteral("Hts3d"));
 
     auto viewerSdk = std::make_shared<hts::viewer::HtsViewerSdk>();

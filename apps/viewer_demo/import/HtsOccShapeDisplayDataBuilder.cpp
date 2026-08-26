@@ -76,37 +76,6 @@ private:
     std::chrono::steady_clock::time_point m_Start;
 };
 
-void appendTriangle(hts::viewer::HtsDisplayFaceData& face,
-                    const hts::viewer::HtsVec3f& a,
-                    const hts::viewer::HtsVec3f& b,
-                    const hts::viewer::HtsVec3f& c,
-                    const hts::viewer::HtsVec3f& normalA,
-                    const hts::viewer::HtsVec3f& normalB,
-                    const hts::viewer::HtsVec3f& normalC,
-                    bool reversed)
-{
-    const unsigned int firstVertex = static_cast<unsigned int>(face.positions.size());
-    face.positions.push_back(a);
-    face.positions.push_back(b);
-    face.positions.push_back(c);
-    face.normals.push_back(normalA);
-    face.normals.push_back(normalB);
-    face.normals.push_back(normalC);
-    face.barycentric.push_back({1.0f, 0.0f, 0.0f});
-    face.barycentric.push_back({0.0f, 1.0f, 0.0f});
-    face.barycentric.push_back({0.0f, 0.0f, 1.0f});
-    if (reversed) {
-        face.indices.push_back(firstVertex);
-        face.indices.push_back(firstVertex + 2);
-        face.indices.push_back(firstVertex + 1);
-    }
-    else {
-        face.indices.push_back(firstVertex);
-        face.indices.push_back(firstVertex + 1);
-        face.indices.push_back(firstVertex + 2);
-    }
-
-}
 
 hts::viewer::HtsVec3f normalizedCross(const hts::viewer::HtsVec3f& lhs,
                                       const hts::viewer::HtsVec3f& rhs)
@@ -184,47 +153,109 @@ hts::viewer::HtsColor4f engineeringPaletteColor(int seed, bool sheetFace)
     return solidPalette[index];
 }
 
-bool appendPolygon3D(const TopoDS_Edge& edge,
-                     hts::viewer::HtsDisplayEdgeData& displayEdge)
+bool appendPolygon3D(
+        const TopoDS_Edge& edge,
+        hts::viewer::HtsDisplayEdgeData& displayEdge)
 {
-    TopLoc_Location location;
-    Handle(Poly_Polygon3D) polygon = BRep_Tool::Polygon3D(edge, location);
-    if (polygon.IsNull() || polygon->NbNodes() < 2) {
+    try {
+        TopLoc_Location location;
+        Handle(Poly_Polygon3D) polygon =
+                BRep_Tool::Polygon3D(edge, location);
+
+        if (polygon.IsNull() || polygon->NbNodes() < 2) {
+            return false;
+        }
+
+        displayEdge.polyline.reserve(
+                static_cast<std::size_t>(polygon->NbNodes()));
+
+        const TColgp_Array1OfPnt& nodes = polygon->Nodes();
+
+        for (Standard_Integer i = nodes.Lower();
+             i <= nodes.Upper();
+             ++i) {
+            const gp_Pnt point =
+                    nodes.Value(i).Transformed(
+                            location.Transformation());
+
+            displayEdge.polyline.push_back({
+                                                   static_cast<float>(point.X()),
+                                                   static_cast<float>(point.Y()),
+                                                   static_cast<float>(point.Z())
+                                           });
+        }
+
+        return displayEdge.polyline.size() >= 2;
+    }
+    catch (const Standard_Failure&) {
+        displayEdge.polyline.clear();
         return false;
     }
-    displayEdge.polyline.reserve(static_cast<std::size_t>(polygon->NbNodes()));
-    const TColgp_Array1OfPnt& nodes = polygon->Nodes();
-    for (Standard_Integer i = nodes.Lower(); i <= nodes.Upper(); ++i) {
-        const gp_Pnt point = nodes.Value(i).Transformed(location.Transformation());
-        displayEdge.polyline.push_back({static_cast<float>(point.X()),
-                                        static_cast<float>(point.Y()),
-                                        static_cast<float>(point.Z())});
+    catch (...) {
+        displayEdge.polyline.clear();
+        return false;
     }
-    return displayEdge.polyline.size() >= 2;
-
 }
 
-bool appendSampledCurve(const TopoDS_Edge& edge,
-                        hts::viewer::HtsDisplayEdgeData& displayEdge,
-                        int maxSamplePoints)
+bool appendSampledCurve(
+        const TopoDS_Edge& edge,
+        hts::viewer::HtsDisplayEdgeData& displayEdge,
+        int maxSamplePoints)
 {
-    BRepAdaptor_Curve curve(edge);
-    const double first = curve.FirstParameter();
-    const double last = curve.LastParameter();
-    if (!std::isfinite(first) || !std::isfinite(last) || first == last) {
+    try {
+        BRepAdaptor_Curve curve(edge);
+
+        const double first = curve.FirstParameter();
+        const double last = curve.LastParameter();
+
+        if (!std::isfinite(first)
+            || !std::isfinite(last)
+            || first == last) {
+            return false;
+        }
+
+        const int sampleCount =
+                curve.GetType() == GeomAbs_Line
+                ? 1
+                : std::max(2, maxSamplePoints);
+
+        displayEdge.polyline.reserve(
+                static_cast<std::size_t>(sampleCount + 1));
+
+        for (int i = 0; i <= sampleCount; ++i) {
+            const double t =
+                    first
+                    + (last - first)
+                      * (static_cast<double>(i)
+                         / static_cast<double>(sampleCount));
+
+            gp_Pnt point;
+            curve.D0(t, point);
+
+            if (!std::isfinite(point.X())
+                || !std::isfinite(point.Y())
+                || !std::isfinite(point.Z())) {
+                displayEdge.polyline.clear();
+                return false;
+            }
+
+            displayEdge.polyline.push_back({
+                                                   static_cast<float>(point.X()),
+                                                   static_cast<float>(point.Y()),
+                                                   static_cast<float>(point.Z())
+                                           });
+        }
+
+        return displayEdge.polyline.size() >= 2;
+    }
+    catch (const Standard_Failure&) {
+        displayEdge.polyline.clear();
         return false;
     }
-    const int sampleCount = curve.GetType() == GeomAbs_Line ? 1 : std::max(2, maxSamplePoints);
-    displayEdge.polyline.reserve(sampleCount + 1);
-    for (int i = 0; i <= sampleCount; ++i) {
-        const double t = first + (last - first) * (static_cast<double>(i) / static_cast<double>(sampleCount));
-        gp_Pnt point;
-        curve.D0(t, point);
-        displayEdge.polyline.push_back({static_cast<float>(point.X()),
-                                        static_cast<float>(point.Y()),
-                                        static_cast<float>(point.Z())});
+    catch (...) {
+        displayEdge.polyline.clear();
+        return false;
     }
-    return displayEdge.polyline.size() >= 2;
 }
 
 struct BodyBuildInfo
@@ -338,12 +369,41 @@ bool HtsOccShapeDisplayDataBuilder::build(const TopoDS_Shape& shape,
     {
         ImportStageTimer stage("BRepMesh triangulation");
         try {
-            BRepMesh_IncrementalMesh mesher(shape,
-                                            options.linearDeflection,
-                                            options.relativeDeflection,
-                                            options.angularDeflection,
-                                            options.meshInParallel);
-            mesher.Perform();
+            ImportStageTimer stage("BRepMesh triangulation");
+
+            try {
+                BRepMesh_IncrementalMesh mesher(
+                        shape,
+                        options.linearDeflection,
+                        options.relativeDeflection,
+                        options.angularDeflection,
+                        options.meshInParallel);
+
+                /*
+                 * 带 Shape 参数的 BRepMesh_IncrementalMesh 构造函数
+                 * 已经自动执行 Perform()，这里不能再次调用 mesher.Perform()。
+                 */
+                if (!mesher.IsDone()) {
+                    errorMessage = "BRepMesh_IncrementalMesh did not complete.";
+                    return false;
+                }
+            }
+            catch (const Standard_Failure& failure) {
+                const char* message = failure.GetMessageString();
+                errorMessage =
+                        std::string("BRepMesh_IncrementalMesh failed: ")
+                        + (message ? message : "unknown OCCT failure");
+                return false;
+            }
+            catch (...) {
+                errorMessage =
+                        "BRepMesh_IncrementalMesh failed with unknown exception.";
+                return false;
+            }
+
+            std::cout << "[ImportStats] meshParallel="
+                      << (options.meshInParallel ? "true" : "false")
+                      << std::endl;
         }
         catch (const Standard_Failure& failure) {
             errorMessage = std::string("BRepMesh_IncrementalMesh failed: ") + failure.GetMessageString();
@@ -509,56 +569,177 @@ bool HtsOccShapeDisplayDataBuilder::build(const TopoDS_Shape& shape,
                     ++faceEdgeRelationCount;
                 }
             }
-            displayFace.positions.reserve(static_cast<std::size_t>(triangulation->NbTriangles()) * 3);
-            displayFace.normals.reserve(static_cast<std::size_t>(triangulation->NbTriangles()) * 3);
-            displayFace.barycentric.reserve(static_cast<std::size_t>(triangulation->NbTriangles()) * 3);
-            displayFace.indices.reserve(static_cast<std::size_t>(triangulation->NbTriangles()) * 3);
+            const Standard_Integer nodeCount = triangulation->NbNodes();
+            const Standard_Integer sourceTriangleCount = triangulation->NbTriangles();
+
+            displayFace.positions.reserve(static_cast<std::size_t>(nodeCount));
+            displayFace.normals.reserve(static_cast<std::size_t>(nodeCount));
+            displayFace.indices.reserve(static_cast<std::size_t>(sourceTriangleCount) * 3);
+
+            /*
+             * 普通 CAD Surface 不再常驻 barycentric。
+             * HtsDisplayFaceData::barycentric 字段暂时保留，避免修改公开 DTO；
+             * 此处不填充即可。
+             */
+
             const bool reversed = face.Orientation() == TopAbs_REVERSED;
             if (reversed) {
                 ++reversedFaceCount;
             }
-            const bool hasOcctNormals = triangulation->HasNormals();
-            for (Standard_Integer i = 1; i <= triangulation->NbTriangles(); ++i) {
-                const Poly_Triangle& triangle = triangulation->Triangle(i);
+
+            bool hasOcctNormals = triangulation->HasNormals();
+
+            /*
+             * 一个 OCCT triangulation node 只生成一个 Display vertex。
+             * 顶点共享限定在当前 Face 内，不跨 Face 合并：
+             *
+             * - 保留 Face -> contiguous vertex range；
+             * - RangeTable / Selection / Partial Material 仍可按 Face 工作；
+             * - 不会把两个 CAD Face 的法向或显示属性焊接到一起。
+             */
+            for (Standard_Integer nodeIndex = 1;
+                 nodeIndex <= nodeCount;
+                 ++nodeIndex) {
+                const gp_Pnt point =
+                        triangulation->Node(nodeIndex)
+                                .Transformed(location.Transformation());
+
+                displayFace.positions.push_back({
+                                                        static_cast<float>(point.X()),
+                                                        static_cast<float>(point.Y()),
+                                                        static_cast<float>(point.Z())
+                                                });
+
+                if (hasOcctNormals) {
+                    try {
+                        displayFace.normals.push_back(
+                                transformedOccNormal(
+                                        *triangulation,
+                                        nodeIndex,
+                                        location,
+                                        reversed));
+                    }
+                    catch (const Standard_Failure&) {
+                        /*
+                         * 当前 Face 的 OCCT Normal 数据不可可靠读取时，
+                         * 整个 Face 统一退回 Triangle Normal 累加路径。
+                         */
+                        hasOcctNormals = false;
+                        displayFace.normals.assign(
+                                displayFace.positions.size(),
+                                hts::viewer::HtsVec3f(
+                                        0.0f, 0.0f, 0.0f));
+                    }
+                }
+                else {
+                    displayFace.normals.push_back(
+                            hts::viewer::HtsVec3f(
+                                    0.0f, 0.0f, 0.0f));
+                }
+            }
+
+            for (Standard_Integer triangleIndex = 1;
+                 triangleIndex <= sourceTriangleCount;
+                 ++triangleIndex) {
+                const Poly_Triangle& triangle =
+                        triangulation->Triangle(triangleIndex);
+
                 Standard_Integer index1 = 0;
                 Standard_Integer index2 = 0;
                 Standard_Integer index3 = 0;
                 triangle.Get(index1, index2, index3);
-                if (index1 < 1 || index1 > triangulation->NbNodes()
-                    || index2 < 1 || index2 > triangulation->NbNodes()
-                    || index3 < 1 || index3 > triangulation->NbNodes()) {
+
+                if (index1 < 1 || index1 > nodeCount
+                    || index2 < 1 || index2 > nodeCount
+                    || index3 < 1 || index3 > nodeCount) {
                     continue;
                 }
-                const gp_Pnt p1 = triangulation->Node(index1).Transformed(location.Transformation());
-                const gp_Pnt p2 = triangulation->Node(index2).Transformed(location.Transformation());
-                const gp_Pnt p3 = triangulation->Node(index3).Transformed(location.Transformation());
-                const hts::viewer::HtsVec3f v1(static_cast<float>(p1.X()), static_cast<float>(p1.Y()), static_cast<float>(p1.Z()));
-                const hts::viewer::HtsVec3f v2(static_cast<float>(p2.X()), static_cast<float>(p2.Y()), static_cast<float>(p2.Z()));
-                const hts::viewer::HtsVec3f v3(static_cast<float>(p3.X()), static_cast<float>(p3.Y()), static_cast<float>(p3.Z()));
-                hts::viewer::HtsVec3f n1;
-                hts::viewer::HtsVec3f n2;
-                hts::viewer::HtsVec3f n3;
-                if (hasOcctNormals) {
-                    n1 = transformedOccNormal(*triangulation, index1, location, reversed);
-                    n2 = transformedOccNormal(*triangulation, index2, location, reversed);
-                    n3 = transformedOccNormal(*triangulation, index3, location, reversed);
-                    ++occtNormalTriangleCount;
+
+                const unsigned int vertexIndex1 =
+                        static_cast<unsigned int>(index1 - 1);
+                const unsigned int vertexIndex2 =
+                        static_cast<unsigned int>(index2 - 1);
+                const unsigned int vertexIndex3 =
+                        static_cast<unsigned int>(index3 - 1);
+
+                /*
+                 * OCCT REVERSED Face需要反转三角形绕序。
+                 * Node Array本身不复制，只调整Index Buffer。
+                 */
+                if (reversed) {
+                    displayFace.indices.push_back(vertexIndex1);
+                    displayFace.indices.push_back(vertexIndex3);
+                    displayFace.indices.push_back(vertexIndex2);
                 }
                 else {
-                    const hts::viewer::HtsVec3f normal = computedTriangleNormal(v1, v2, v3, reversed);
-                    n1 = normal;
-                    n2 = normal;
-                    n3 = normal;
-                    ++computedNormalTriangleCount;
+                    displayFace.indices.push_back(vertexIndex1);
+                    displayFace.indices.push_back(vertexIndex2);
+                    displayFace.indices.push_back(vertexIndex3);
                 }
-                appendTriangle(displayFace,
-                               v1,
-                               v2,
-                               v3,
-                               n1,
-                               n2,
-                               n3,
-                               reversed);
+
+                if (hasOcctNormals) {
+                    ++occtNormalTriangleCount;
+                    continue;
+                }
+
+                const hts::viewer::HtsVec3f& v1 =
+                        displayFace.positions[vertexIndex1];
+                const hts::viewer::HtsVec3f& v2 =
+                        displayFace.positions[vertexIndex2];
+                const hts::viewer::HtsVec3f& v3 =
+                        displayFace.positions[vertexIndex3];
+
+                const hts::viewer::HtsVec3f triangleNormal =
+                        computedTriangleNormal(v1, v2, v3, reversed);
+
+                /*
+                 * Face-local indexed mesh：
+                 * 同一 Face 内共享节点的 Normal由相邻三角形累加后归一化。
+                 *
+                 * 不跨 Face共享，因此 CAD Face之间的法向断点仍然保留。
+                 */
+                hts::viewer::HtsVec3f& normal1 =
+                        displayFace.normals[vertexIndex1];
+                hts::viewer::HtsVec3f& normal2 =
+                        displayFace.normals[vertexIndex2];
+                hts::viewer::HtsVec3f& normal3 =
+                        displayFace.normals[vertexIndex3];
+
+                normal1.x += triangleNormal.x;
+                normal1.y += triangleNormal.y;
+                normal1.z += triangleNormal.z;
+
+                normal2.x += triangleNormal.x;
+                normal2.y += triangleNormal.y;
+                normal2.z += triangleNormal.z;
+
+                normal3.x += triangleNormal.x;
+                normal3.y += triangleNormal.y;
+                normal3.z += triangleNormal.z;
+
+                ++computedNormalTriangleCount;
+            }
+
+            if (!hasOcctNormals) {
+                for (hts::viewer::HtsVec3f& normal : displayFace.normals) {
+                    const float lengthSquared =
+                            normal.x * normal.x
+                            + normal.y * normal.y
+                            + normal.z * normal.z;
+
+                    if (lengthSquared <= 1.0e-12f) {
+                        normal = hts::viewer::HtsVec3f(
+                                0.0f, 0.0f, 1.0f);
+                        continue;
+                    }
+
+                    const float inverseLength =
+                            1.0f / std::sqrt(lengthSquared);
+
+                    normal.x *= inverseLength;
+                    normal.y *= inverseLength;
+                    normal.z *= inverseLength;
+                }
             }
             if (displayFace.indices.empty()) {
                 ++skippedFaceCount;
@@ -691,23 +872,25 @@ bool HtsOccShapeDisplayDataBuilder::build(const TopoDS_Shape& shape,
     }
     const std::size_t positionMemoryBytes = vertexCount * sizeof(hts::viewer::HtsVec3f);
     const std::size_t normalMemoryBytes = vertexCount * sizeof(hts::viewer::HtsVec3f);
-    const std::size_t barycentricMemoryBytes = vertexCount * sizeof(hts::viewer::HtsVec3f);
     const std::size_t indexMemoryBytes = triangleCount * 3 * sizeof(unsigned int);
     const std::size_t edgePolylineMemoryBytes = totalEdgePolylinePointCount * sizeof(hts::viewer::HtsVec3f);
     const std::size_t rangeTableMemoryBytes =
             (triangulatedFaceCount + object.edges.size()) * sizeof(std::size_t) * 2;
     const std::size_t materialBucketMemoryBytes =
             object.importedMaterials.size() * sizeof(hts::viewer::HtsImportedMaterialData);
-    const std::size_t estimatedCpuBytes = positionMemoryBytes
-                                          + normalMemoryBytes
-                                          + barycentricMemoryBytes
-                                          + indexMemoryBytes
-                                          + edgePolylineMemoryBytes
-                                          + rangeTableMemoryBytes
-                                          + materialBucketMemoryBytes;
+    const std::size_t estimatedCpuBytes =
+            positionMemoryBytes
+            + normalMemoryBytes
+            + indexMemoryBytes
+            + edgePolylineMemoryBytes
+            + rangeTableMemoryBytes
+            + materialBucketMemoryBytes;
     const double estimatedCpuMB = double(estimatedCpuBytes) / (1024.0 * 1024.0);
-    const double estimatedGpuMB = double(positionMemoryBytes + normalMemoryBytes + barycentricMemoryBytes)
-                                  / (1024.0 * 1024.0);
+    const double estimatedGpuMB =
+            double(positionMemoryBytes
+                   + normalMemoryBytes
+                   + indexMemoryBytes)
+            / (1024.0 * 1024.0);
     const HtsImportMemoryBudgetDecision memoryDecision =
             evaluateImportMemoryBudget(options, estimatedCpuMB, estimatedGpuMB, "DisplayData finalize");
     logImportMemoryLive("DisplayData finalize", options, memoryDecision);

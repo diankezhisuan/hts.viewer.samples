@@ -83,7 +83,6 @@ private:
     QAction* m_FloorVisibleAction = nullptr;
     QAction* m_GroundGridVisibleAction = nullptr;
     QAction* m_CadEdgesAction = nullptr;
-    QAction* m_WireframeAction = nullptr;
     QAction* m_EngineeringStyleAction = nullptr;
     QAction* m_ShadedStyleAction = nullptr;
     QAction* m_ShadedEdgesStyleAction = nullptr;

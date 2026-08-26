@@ -12,6 +12,7 @@
 #include <QByteArray>
 #include <QColorDialog>
 #include <QComboBox>
+#include <QCoreApplication>
 #include <QDockWidget>
 #include <QFileDialog>
 #include <QFileInfo>
@@ -122,8 +123,8 @@ hts::viewer::HtsMaterialAppearance materialAppearance(
 ViewerMainWindow::ViewerMainWindow(
         std::shared_ptr<hts::viewer::HtsViewerSdk> viewerSdk,
         QWidget* parent)
-        : QMainWindow(parent)
-        , m_ViewerSdk(std::move(viewerSdk))
+    : QMainWindow(parent)
+    , m_ViewerSdk(std::move(viewerSdk))
 {
     setWindowTitle(tr("Hts Viewer SDK · Product Sandbox"));
     m_ViewerWidget = new HtsViewerWidget(m_ViewerSdk, this);
@@ -136,42 +137,42 @@ ViewerMainWindow::ViewerMainWindow(
     m_ViewerWidget->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(m_ViewerWidget, &QWidget::customContextMenuRequested,
             this, [this](const QPoint& position) {
-                QMenu menu(this);
-                menu.addAction(tr("适合全部"), this, [this]() {
-                    m_ViewerSdk->fitView(); m_ViewerWidget->update();
-                });
-                menu.addAction(tr("适合选择"), this, [this]() {
-                    m_ViewerSdk->fitSelection(); m_ViewerWidget->update();
-                });
-                menu.addAction(tr("清除选择"), this, [this]() {
-                    m_ViewerSdk->clearSelection(); updateUiState(); m_ViewerWidget->update();
-                });
-                menu.addSeparator();
-                menu.addAction(tr("隐藏选择"), this, [this]() {
-                    runDisplayAction(tr("隐藏选择"), [this]() { return m_ViewerSdk->hideSelected(); });
-                });
-                menu.addAction(tr("显示选择"), this, [this]() {
-                    runDisplayAction(tr("显示选择"), [this]() { return m_ViewerSdk->showSelected(); });
-                });
-                menu.addAction(tr("隔离选择"), this, [this]() {
-                    runDisplayAction(tr("隔离选择"), [this]() { return m_ViewerSdk->isolateSelected(); });
-                });
-                menu.addAction(tr("清除隔离"), this, [this]() {
-                    runDisplayAction(tr("清除隔离"), [this]() { return m_ViewerSdk->clearIsolate(); });
-                });
-                menu.addAction(tr("显示全部"), this, [this]() {
-                    runDisplayAction(tr("显示全部"), [this]() { return m_ViewerSdk->showAll(); });
-                });
-                menu.addSeparator();
-                menu.addAction(tr("恢复原始外观"), this, [this]() {
-                    runDisplayAction(tr("恢复原始外观"), [this]() {
-                        const bool handled = m_ViewerSdk->resetSelectedStyle();
-                        if (handled) m_ViewerSdk->clearSelection();
-                        return handled;
-                    });
-                });
-                menu.exec(m_ViewerWidget->mapToGlobal(position));
+        QMenu menu(this);
+        menu.addAction(tr("适合全部"), this, [this]() {
+            m_ViewerSdk->fitView(); m_ViewerWidget->update();
+        });
+        menu.addAction(tr("适合选择"), this, [this]() {
+            m_ViewerSdk->fitSelection(); m_ViewerWidget->update();
+        });
+        menu.addAction(tr("清除选择"), this, [this]() {
+            m_ViewerSdk->clearSelection(); updateUiState(); m_ViewerWidget->update();
+        });
+        menu.addSeparator();
+        menu.addAction(tr("隐藏选择"), this, [this]() {
+            runDisplayAction(tr("隐藏选择"), [this]() { return m_ViewerSdk->hideSelected(); });
+        });
+        menu.addAction(tr("显示选择"), this, [this]() {
+            runDisplayAction(tr("显示选择"), [this]() { return m_ViewerSdk->showSelected(); });
+        });
+        menu.addAction(tr("隔离选择"), this, [this]() {
+            runDisplayAction(tr("隔离选择"), [this]() { return m_ViewerSdk->isolateSelected(); });
+        });
+        menu.addAction(tr("清除隔离"), this, [this]() {
+            runDisplayAction(tr("清除隔离"), [this]() { return m_ViewerSdk->clearIsolate(); });
+        });
+        menu.addAction(tr("显示全部"), this, [this]() {
+            runDisplayAction(tr("显示全部"), [this]() { return m_ViewerSdk->showAll(); });
+        });
+        menu.addSeparator();
+        menu.addAction(tr("恢复原始外观"), this, [this]() {
+            runDisplayAction(tr("恢复原始外观"), [this]() {
+                const bool handled = m_ViewerSdk->resetSelectedStyle();
+                if (handled) m_ViewerSdk->clearSelection();
+                return handled;
             });
+        });
+        menu.exec(m_ViewerWidget->mapToGlobal(position));
+    });
 
     m_StatusLabel = new QLabel(tr("正在初始化 Viewer SDK…"), this);
     statusBar()->addWidget(m_StatusLabel, 1);
@@ -179,31 +180,31 @@ ViewerMainWindow::ViewerMainWindow(
 
     connect(m_ViewerWidget, &HtsViewerWidget::viewerInitialized,
             this, [this]() {
-                m_ViewerSdk->setSelectionMode(hts::viewer::HtsSelectionMode::Object);
-                m_ViewerSdk->setAxisVisible(m_AxisVisibleAction->isChecked());
-                m_ViewerSdk->setHudAxisVisible(m_HudVisibleAction->isChecked());
-                m_ViewerSdk->setScaleBarVisible(m_HudVisibleAction->isChecked());
-                m_ViewerSdk->setFloorVisible(m_FloorVisibleAction->isChecked());
-                m_ViewerSdk->setGroundGridVisible(m_GroundGridVisibleAction->isChecked());
-                setGridPlane(hts::viewer::HtsGridPlane::XOY);
-                updateUiState(tr("Viewer SDK 已就绪，请导入模型"));
-            });
+        m_ViewerSdk->setSelectionMode(hts::viewer::HtsSelectionMode::Object);
+        m_ViewerSdk->setAxisVisible(m_AxisVisibleAction->isChecked());
+        m_ViewerSdk->setHudAxisVisible(m_HudVisibleAction->isChecked());
+        m_ViewerSdk->setScaleBarVisible(m_HudVisibleAction->isChecked());
+        m_ViewerSdk->setFloorVisible(m_FloorVisibleAction->isChecked());
+        m_ViewerSdk->setGroundGridVisible(m_GroundGridVisibleAction->isChecked());
+        setGridPlane(hts::viewer::HtsGridPlane::XOY);
+        updateUiState(tr("Viewer SDK 已就绪，请导入模型"));
+    });
     connect(m_ViewerWidget, &HtsViewerWidget::viewerInitializationFailed,
             this, [this](const QString& message) {
-                m_StatusLabel->setText(message);
-                QMessageBox::critical(this, tr("Viewer 初始化失败"), message);
-            });
+        m_StatusLabel->setText(message);
+        QMessageBox::critical(this, tr("Viewer 初始化失败"), message);
+    });
     connect(m_ViewerWidget, &HtsViewerWidget::viewerStateChanged,
             this, [this]() { updateUiState(); });
     connect(m_ViewerWidget, &HtsViewerWidget::displayCommandFinished,
             this, [this]() {
-                if (m_FitAfterDisplayCommand) {
-                    m_FitAfterDisplayCommand = false;
-                    m_ViewerSdk->fitView();
-                    m_ViewerWidget->update();
-                }
-                updateUiState(tr("后台显示任务已完成"));
-            });
+        if (m_FitAfterDisplayCommand) {
+            m_FitAfterDisplayCommand = false;
+            m_ViewerSdk->fitView();
+            m_ViewerWidget->update();
+        }
+        updateUiState(tr("后台显示任务已完成"));
+    });
 }
 
 ViewerMainWindow::~ViewerMainWindow() = default;
@@ -264,7 +265,6 @@ void ViewerMainWindow::createActions()
     m_EngineeringStyleAction = makeStyle(tr("工程默认"), hts::viewer::HtsDisplayStyle::EngineeringDefault);
     m_ShadedStyleAction = makeStyle(tr("着色"), hts::viewer::HtsDisplayStyle::Shaded);
     m_ShadedEdgesStyleAction = makeStyle(tr("着色 + CAD 边"), hts::viewer::HtsDisplayStyle::ShadedWithCadEdges);
-    makeStyle(tr("三角线框"), hts::viewer::HtsDisplayStyle::TriangleWireframe);
     m_EngineeringStyleAction->setChecked(true);
 
     m_CadEdgesAction = new QAction(tr("显示 CAD 边"), this);
@@ -273,12 +273,6 @@ void ViewerMainWindow::createActions()
     connect(m_CadEdgesAction, &QAction::toggled, this, [this](bool checked) {
         m_ViewerSdk->showCadEdges(checked); updateUiState(); m_ViewerWidget->update();
     });
-    m_WireframeAction = new QAction(tr("显示三角线框"), this);
-    m_WireframeAction->setCheckable(true);
-    connect(m_WireframeAction, &QAction::toggled, this, [this](bool checked) {
-        m_ViewerSdk->showTriangleWireframe(checked); updateUiState(); m_ViewerWidget->update();
-    });
-
     m_AxisVisibleAction = new QAction(tr("显示坐标轴"), this);
     m_AxisVisibleAction->setCheckable(true);
     m_AxisVisibleAction->setChecked(true);
@@ -365,7 +359,6 @@ void ViewerMainWindow::createMenus()
     display->addActions(m_StyleGroup->actions());
     display->addSeparator();
     display->addAction(m_CadEdgesAction);
-    display->addAction(m_WireframeAction);
     display->addAction(m_AxisVisibleAction);
     display->addAction(m_HudVisibleAction);
     display->addAction(m_FloorVisibleAction);
@@ -396,9 +389,15 @@ void ViewerMainWindow::createMenus()
     QMenu* help = menuBar()->addMenu(tr("帮助"));
     help->addAction(m_LicenseAction);
     help->addAction(tr("关于"), this, [this]() {
+        const QString version = QCoreApplication::applicationVersion();
         QMessageBox::about(this, tr("关于 Hts Viewer SDK Demo"),
-                           tr("面向交付验证的 Hts Viewer SDK 可视化宿主。\n"
-                              "本程序只调用公开 HtsViewerSdk，不编译或访问 Viewer 内部源码。"));
+                tr("<h3>Hts Viewer SDK Demo</h3>"
+                   "<p>面向 CAD、CAE 和工业三维软件的商业可视化 SDK 演示程序。</p>"
+                   "<p><b>开发商</b><br>成都电科智算科技有限公司</p>"
+                   "<p><b>技术支持</b><br>"
+                   "<a href=\"mailto:cae_manager@163.com\">cae_manager@163.com</a></p>"
+                   "<p>Copyright &copy; 2026 成都电科智算科技有限公司。<br>"
+                   "保留所有权利。</p>").arg(version));
     });
 }
 
@@ -413,7 +412,6 @@ void ViewerMainWindow::createToolBar()
     toolbar->addActions(m_GridPlaneGroup->actions());
     toolbar->addSeparator();
     toolbar->addAction(m_CadEdgesAction);
-    toolbar->addAction(m_WireframeAction);
     toolbar->addAction(m_AxisVisibleAction);
     toolbar->addAction(m_HudVisibleAction);
     toolbar->addAction(m_FloorVisibleAction);
@@ -492,8 +490,8 @@ void ViewerMainWindow::createDockPanel()
         if (!selected.isValid()) return;
         m_MaterialColor = selected;
         const hts::viewer::HtsColor4f color{
-                float(selected.redF()), float(selected.greenF()),
-                float(selected.blueF()), float(selected.alphaF())};
+            float(selected.redF()), float(selected.greenF()),
+            float(selected.blueF()), float(selected.alphaF())};
         runDisplayAction(tr("设置颜色"), [this, color]() {
             return applySelectionColor(color);
         });
@@ -602,18 +600,18 @@ void ViewerMainWindow::createDockPanel()
     });
     connect(m_MaterialCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [this](int) {
-                const auto preset = static_cast<hts::viewer::HtsMaterialPreset>(m_MaterialCombo->currentData().toInt());
-                if (preset == hts::viewer::HtsMaterialPreset::Custom) return;
-                const auto material = presetMaterial(preset);
-                const QSignalBlocker metallicBlock(m_MetallicSlider);
-                const QSignalBlocker roughnessBlock(m_RoughnessSlider);
-                const QSignalBlocker specularBlock(m_SpecularSlider);
-                m_MetallicSlider->setValue(int(material.metallic * 100.0f));
-                m_RoughnessSlider->setValue(int(material.roughness * 100.0f));
-                m_SpecularSlider->setValue(int(material.specular * 100.0f));
-                m_MaterialColor = QColor::fromRgbF(material.baseColor.r, material.baseColor.g,
-                                                   material.baseColor.b, material.opacity);
-            });
+        const auto preset = static_cast<hts::viewer::HtsMaterialPreset>(m_MaterialCombo->currentData().toInt());
+        if (preset == hts::viewer::HtsMaterialPreset::Custom) return;
+        const auto material = presetMaterial(preset);
+        const QSignalBlocker metallicBlock(m_MetallicSlider);
+        const QSignalBlocker roughnessBlock(m_RoughnessSlider);
+        const QSignalBlocker specularBlock(m_SpecularSlider);
+        m_MetallicSlider->setValue(int(material.metallic * 100.0f));
+        m_RoughnessSlider->setValue(int(material.roughness * 100.0f));
+        m_SpecularSlider->setValue(int(material.specular * 100.0f));
+        m_MaterialColor = QColor::fromRgbF(material.baseColor.r, material.baseColor.g,
+                                           material.baseColor.b, material.opacity);
+    });
     root->addWidget(materialGroup);
 
     m_InfoPanel = new QPlainTextEdit(panel);
@@ -692,8 +690,8 @@ void ViewerMainWindow::startImportModelFile(const QString& filePath)
             }
             if (!result->success || result->model.empty()) {
                 const QString detail = !result->errorMessage.empty()
-                                       ? QString::fromStdString(result->errorMessage)
-                                       : QObject::tr("导入结果中没有可显示的三角形。");
+                        ? QString::fromStdString(result->errorMessage)
+                        : QObject::tr("导入结果中没有可显示的三角形。");
                 QMessageBox::warning(self, QObject::tr("导入失败"), detail);
                 self->updateUiState(QObject::tr("导入失败"));
                 return;
@@ -705,7 +703,6 @@ void ViewerMainWindow::startImportModelFile(const QString& filePath)
             self->m_ViewerSdk->setDisplayStyle(
                     hts::viewer::HtsDisplayStyle::EngineeringDefault);
             self->m_ViewerSdk->showCadEdges(true);
-            self->m_ViewerSdk->showTriangleWireframe(false);
 
             if (!self->m_ViewerSdk->upsertDisplayData(result->model.meshData)) {
                 QMessageBox::warning(self, QObject::tr("导入失败"),
@@ -806,37 +803,48 @@ bool ViewerMainWindow::applySelectionOpacity(float opacity)
 }
 
 bool ViewerMainWindow::applySelectionMaterial(
-        const hts::viewer::HtsMaterialAppearance& appearance)
+    const hts::viewer::HtsMaterialAppearance& appearance)
 {
-    const std::vector<hts::viewer::HtsSelectionTarget> targets =
-            m_ViewerSdk->selectionTargets();
-    if (targets.empty()) return false;
-
-    m_ViewerSdk->clearSelection();
-    m_ViewerSdk->clearHover();
-
-    const bool onlyObjects = std::all_of(
-            targets.begin(), targets.end(), [](const hts::viewer::HtsSelectionTarget& target) {
-                return target.type == hts::viewer::HtsSelectionTargetType::Object;
-            });
-    if (onlyObjects) {
-        std::vector<std::string> objectIds;
-        objectIds.reserve(targets.size());
-        for (const auto& target : targets) objectIds.push_back(target.objectId);
-        return m_ViewerSdk->setObjectsMaterialAppearance(objectIds, appearance);
+    if (!m_ViewerSdk || !m_ViewerSdk->hasSelection()) {
+        return false;
     }
 
-    bool handled = false;
-    for (const auto& target : targets) {
-        if (target.type == hts::viewer::HtsSelectionTargetType::Edge
-            || target.type == hts::viewer::HtsSelectionTargetType::Vertex) {
-            handled = m_ViewerSdk->setTargetColorAndTransparency(
-                    target, appearance.color, appearance.transparency) || handled;
-        } else {
-            handled = m_ViewerSdk->setTargetMaterialAppearance(
-                    target, appearance) || handled;
-        }
+    /*
+     * Material Appearance统一通过Selected Custom Material一次提交。
+     *
+     * 不再按Object/Body/Face逐Target调用：
+     * setTargetMaterialAppearance()
+     *
+     * 这样当前所有Surface Selection会一次进入SDK的
+     * Persistent Material Batch / Whole Bucket Appearance Fast Path。
+     */
+    hts::viewer::HtsRenderMaterial material;
+    material.baseColor = appearance.color;
+    material.opacity =
+        1.0f - std::clamp(appearance.transparency, 0.0f, 1.0f);
+    material.baseColor.a = material.opacity;
+
+    material.metallic =
+        std::clamp(appearance.metallic, 0.0f, 1.0f);
+    material.roughness =
+        std::clamp(appearance.roughness, 0.04f, 1.0f);
+    material.specular =
+        std::clamp(appearance.specular, 0.0f, 1.0f);
+
+    material.transparent = material.opacity < 0.999f;
+
+    const bool handled =
+        m_ViewerSdk->setSelectedCustomMaterial(material);
+
+    if (handled) {
+        /*
+         * 必须在Material提交完成以后再清Selection。
+         * setSelectedCustomMaterial()本身依赖当前Selection Targets。
+         */
+        m_ViewerSdk->clearSelection();
+        m_ViewerSdk->clearHover();
     }
+
     return handled;
 }
 
@@ -858,9 +866,7 @@ void ViewerMainWindow::updateUiState(const QString& message)
     m_ModeLabel->setText(selectionModeText());
     m_StyleLabel->setText(displayStyleText());
     const QSignalBlocker cadEdgesBlocker(m_CadEdgesAction);
-    const QSignalBlocker wireframeBlocker(m_WireframeAction);
     m_CadEdgesAction->setChecked(m_ViewerSdk->cadEdgesVisible());
-    m_WireframeAction->setChecked(m_ViewerSdk->triangleWireframeVisible());
 
     const bool selected = m_ViewerSdk->hasSelection();
     const auto target = selected ? m_ViewerSdk->selectionTarget()
@@ -870,10 +876,10 @@ void ViewerMainWindow::updateUiState(const QString& message)
     m_VisibleLabel->setText(selected ? (state.visible ? tr("是") : tr("否")) : QStringLiteral("—"));
     m_OpacityLabel->setText(selected ? QString::number(state.opacity, 'f', 2) : QStringLiteral("—"));
     m_ColorLabel->setText(selected
-                          ? QString("%1, %2, %3").arg(state.color.r, 0, 'f', 2)
-                                  .arg(state.color.g, 0, 'f', 2)
-                                  .arg(state.color.b, 0, 'f', 2)
-                          : QStringLiteral("—"));
+            ? QString("%1, %2, %3").arg(state.color.r, 0, 'f', 2)
+                                      .arg(state.color.g, 0, 'f', 2)
+                                      .arg(state.color.b, 0, 'f', 2)
+            : QStringLiteral("—"));
     m_HoverLabel->setText(QString::fromStdString(m_ViewerSdk->hoverSummary()));
     if (selected && !m_OpacitySlider->isSliderDown()) {
         const QSignalBlocker blocker(m_OpacitySlider);
@@ -900,7 +906,6 @@ QString ViewerMainWindow::displayStyleText() const
     switch (m_ViewerSdk->displayStyle()) {
         case hts::viewer::HtsDisplayStyle::Shaded: return tr("着色");
         case hts::viewer::HtsDisplayStyle::ShadedWithCadEdges: return tr("着色 + CAD 边");
-        case hts::viewer::HtsDisplayStyle::TriangleWireframe: return tr("三角线框");
         case hts::viewer::HtsDisplayStyle::EngineeringDefault: return tr("工程默认");
     }
     return tr("未知");

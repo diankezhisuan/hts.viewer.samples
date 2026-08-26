@@ -174,6 +174,8 @@ add_executable(viewer_demo WIN32
     viewer/widget/HtsViewerWidget.cpp)
 
 target_include_directories(viewer_demo PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+target_compile_definitions(viewer_demo PRIVATE
+    HTS_VIEWER_DEMO_VERSION="${PROJECT_VERSION}")
 target_link_libraries(viewer_demo PRIVATE
     Qt5::Widgets
     Qt5::OpenGL

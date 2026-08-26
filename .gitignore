@@ -5,6 +5,7 @@
 /out/
 /install/
 /.vs/
+/.idea/
 /CMakeUserPresets.json
 
 # Generated packages and verification artifacts
